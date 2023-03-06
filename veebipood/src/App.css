@@ -1,0 +1,14 @@
+.pilt{
+  width:100px;
+  }
+  .pilt:hover {
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  .nupp{
+    border: 2px double orangered;
+  }
+  .nupp:hover {
+    background-color: lightgray;
+    cursor: pointer;
+  }
