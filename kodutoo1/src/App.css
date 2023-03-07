@@ -20,11 +20,11 @@
 .tekst2{
   color:green;
   font-weight: bold;
-  border-style: solid;
+  border: solid;
   border-color:red;
-  box-sizing:content-box;
-  margin-right:650px;
+  width: 100px;
   text-align: center;
+  padding:5px;
 }
 .tekst2:hover{
   border-color:brown;
@@ -33,6 +33,7 @@
   width: 200px;
   height: 200px;
   float:right;
+  
 }
 .pilt:hover{
   border-radius: 50px;
