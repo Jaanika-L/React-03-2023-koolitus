@@ -1,0 +1,40 @@
+
+.nupp{
+  background-color: green;
+  color: lightgray;
+}
+.nupp:hover{
+  height: 100px;
+
+}
+.nupp:active{
+  cursor: grab;
+}
+.tekst1:hover{
+  font-size: 24px;
+}
+.tekst1{
+  color:blue;
+  font-style: italic;
+}
+.tekst2{
+  color:green;
+  font-weight: bold;
+  border-style: solid;
+  border-color:red;
+  box-sizing:content-box;
+  margin-right:650px;
+  text-align: center;
+}
+.tekst2:hover{
+  border-color:brown;
+}
+.pilt{
+  width: 200px;
+  height: 200px;
+  float:right;
+}
+.pilt:hover{
+  border-radius: 50px;
+  opacity: 0.5; 
+}

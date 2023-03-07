@@ -8,7 +8,7 @@ function App() {
     <button className="nupp">Nupp</button>
     {/* <p></p>
     <div>Tekst</div> */}
-    {/* <span></span> */}
+    {/* <span>cd</span> */}
     </div>
   );
 }
