@@ -1,10 +1,10 @@
-// import logo from './logo.svg';
 import './App.css';
 import { Link, Route, Routes } from "react-router-dom";
 import Avaleht from './Pages/Avaleht';
 import Ostukorv from './Pages/Ostukorv';
 import LisaToode from './Pages/LisaToode';
 import Seaded from './Pages/Seaded';
+import Meist from './Pages/Meist';
 
 
 function App() {
@@ -25,6 +25,11 @@ function App() {
     <button className="nupp">Seaded</button>
       </Link>
 
+      
+      <Link to="/meist">
+    <button className="nupp">Meist</button>
+      </Link>
+
 
     {/* <p></p>
     <div>Tekst</div> */}
@@ -35,6 +40,7 @@ function App() {
       <Route path='ostukorv' element={ <Ostukorv /> } />
       <Route path='lisa-toode' element={ <LisaToode /> } />
       <Route path='seaded' element={ <Seaded /> } />
+      <Route path='meist' element={ <Meist /> } />
     </Routes>
     </div>
   );
