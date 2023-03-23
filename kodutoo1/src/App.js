@@ -6,13 +6,14 @@ import Kontakt from './Pages/Kontakt';
 import Avaleht from './Pages/Avaleht';
 import Meist from './Pages/Meist';
 import Seaded from './Pages/Seaded';
+import Books from './Pages/Books';
 
 function App() {
   const [sisselogitud, muudaSisselogitud] = useState("ei");
   const [sonum, muudaSonum] = useState("");
   const kasutajaNimiRef = useRef();
   const paroolRef = useRef("");
- 
+  
  
   const logiSisse = () => {
   
@@ -59,11 +60,16 @@ const logiValja = () => {
       <Link to='seaded'>
         <button>Seaded</button>
       </Link>
+      <Link to='books'>
+        <button>Books</button>
+      </Link>
+
 <Routes>
   <Route path='' element = {<Avaleht/>}/>
   <Route path='kontakt' element = {<Kontakt/>}/>
   <Route path='meist' element = {<Meist/>}/>
   <Route path='seaded' element = {<Seaded/>}/>
+  <Route path='books' element = {<Books/>}/>
 </Routes>
 
 </div>
