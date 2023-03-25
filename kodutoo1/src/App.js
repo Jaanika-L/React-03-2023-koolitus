@@ -7,6 +7,7 @@ import Avaleht from './Pages/Avaleht';
 import Meist from './Pages/Meist';
 import Seaded from './Pages/Seaded';
 import Books from './Pages/Books';
+import Numbrid from './Pages/Numbrid';
 
 function App() {
   const [sisselogitud, muudaSisselogitud] = useState("ei");
@@ -63,6 +64,9 @@ const logiValja = () => {
       <Link to='books'>
         <button>Books</button>
       </Link>
+      <Link to='numbrid'>
+        <button>Numbrid</button>
+      </Link>
 
 <Routes>
   <Route path='' element = {<Avaleht/>}/>
@@ -70,6 +74,7 @@ const logiValja = () => {
   <Route path='meist' element = {<Meist/>}/>
   <Route path='seaded' element = {<Seaded/>}/>
   <Route path='books' element = {<Books/>}/>
+  <Route path='numbrid' element = {<Numbrid/>}/>
 </Routes>
 
 </div>
