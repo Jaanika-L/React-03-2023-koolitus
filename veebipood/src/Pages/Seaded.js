@@ -22,6 +22,8 @@ function Seaded() {
 
 // label htmlFor= WCAG - web contet accebility guidelines,ehk nö raskustega inimestele selle võib hetkel ära kustutada
             const salvestaAadress =()=>{
+                // if/ else <---- teeme kontrolli, kas on meile sobiv sisu
+                // react-toastify <----hüpikaken
                 localStorage.setItem("aadress", aadressViide.current.value);
 
             }

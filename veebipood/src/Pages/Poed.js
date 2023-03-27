@@ -107,7 +107,7 @@ const muudaKoikidelKolmasTahtMTaheks = () => {
       <button onClick={muudaKoikOTaheks}> Muuda kõikidel i täht o tähtedeks</button>
       <button onClick={muudaKoikideleKriipsEtte}>Muuda kõikidele "--" ette</button>
       <button onClick={muudaKoikidelKolmasTahtMTaheks}>Muuda kõikidele sõna pikkused numbrid lõppu</button>
-      {poed.map (yksPood => <div>{yksPood}</div>)}  {/* {poed} siis kirjutab järjest aga ei ole sobilik - koodi kasutatakse */}
+      {poed.map ((yksPood, i ) => <div key={i}>{yksPood}</div>)}  {/* {poed} siis kirjutab järjest aga ei ole sobilik - koodi kasutatakse */}
   
       <div>-------------------</div>
       <div>Ülemiste</div>

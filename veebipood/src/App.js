@@ -72,7 +72,7 @@ return (
       </Link>
 
       <Link to="/halda">
-    <button onClick={() => uuendaAktiivneUrl ("/halda")} className={aktiivneUrl === "/halda" ? "url-aktiivne": "nupp"}>Halda</button>
+    <button onClick={() => uuendaAktiivneUrl ("/halda")} className={aktiivneUrl === "/halda" ? "url-aktiivne": "nupp"}>Halda tooteid</button>
       </Link>
 
 

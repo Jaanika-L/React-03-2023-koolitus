@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 
 function Books() {
     const [books, uuendaBooks] = useState (["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Pride and Prejduice", "Harry Potter"]);
+   
  
     const tagasiOriginaali = () => {
     uuendaBooks(["The Great Gatsby", "War and Peace", "Hamlet", "Moby Dick", "Pride and Prejduice", "Harry Potter"]);
@@ -22,6 +23,8 @@ const sonadePikkuseJargi = () => {
     uuendaBooks (books.slice());
 }
 const sonadeArvuJargi = () => {
+    books.sort ((a,b) => a.split ('').length - b.split ('').length);
+    uuendaBooks(books.slice());
     
 
 }
