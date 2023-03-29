@@ -81,7 +81,12 @@ const muudaKoikidelKolmasTahtMTaheks = () => {
   uuendaPoed(tulem);
 
 }
+  const arvutaTahedKokku = () => {
+    let summa = 0;
+    poed.forEach(element => summa = summa + element.length);
+    return summa;
 
+  }
 
 
 
@@ -90,6 +95,7 @@ const muudaKoikidelKolmasTahtMTaheks = () => {
     <div>
       <button onClick={tagasiOriginaali}>Tagasi originaali</button>
       <div>Poode on kokku: {poed.length} tk </div>
+      <div>Kõikide poodide tähemärkide arv on: {arvutaTahedKokku()} </div>
       <button onClick={sorteeriAZ}>Sorteeri A-Z</button>
       <button onClick={sorteeriZA}>Sorteeri Z-A</button>
       <button onClick={sorteeriTahedKas}>Sorteeri tähed kasvavalt</button>

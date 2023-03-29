@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import tootedFailist from "../data/tooted.json"
 
 
@@ -19,6 +20,9 @@ const kustuta = (index) => {
       <div key={ix}>
         {el} 
        <button onClick={()=>kustuta(ix)}>x</button>
+       <Link to={"/muuda/" + ix}>
+        <button>Muuda</button>
+       </Link>
       </div> )}
     </div>
   )
