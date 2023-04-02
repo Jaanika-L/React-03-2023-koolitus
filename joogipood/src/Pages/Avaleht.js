@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import joogidFailist from "../joogid.json"
+import { Link } from "react-router-dom";
 
 function Avaleht() {
 const [joogid, uuendaJoogid] =useState(joogidFailist);
@@ -8,12 +9,14 @@ const [joogid, uuendaJoogid] =useState(joogidFailist);
 
   return (
     <div>Joogid:
-      {joogid.map((element) =>
+      {joogid.map((element, index) =>
       <div>
+        <Link to = {'/jook/:number' + index}> 
         <span>{element}</span>
+        </Link>
         </div>)}
 
-        
+      
 
     </div>
   )
