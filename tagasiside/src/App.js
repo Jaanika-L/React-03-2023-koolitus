@@ -3,6 +3,7 @@ import { Route, Routes, Link} from 'react-router-dom';
 import './App.css';
 import Tagasiside from './Pages/Tagasiside';
 import TagasisideAndjad from './Pages/TagasisideAndjad';
+import Sõnad from './Pages/Sõnad';
 
 
 
@@ -24,6 +25,9 @@ function App() {
 <button>Tagasiside andjad</button>
 </Link>
 
+<Link to = '/sonad'> 
+<button>Sõnad</button>
+</Link>
 
 
 
@@ -34,6 +38,7 @@ function App() {
       <Route path='/' element={<div>Tere</div>}/>
       <Route path='/tagasiside' element={<Tagasiside/>} />
       <Route path='/tagasiside-andjad' element={<TagasisideAndjad/>} />
+      <Route path='/sonad' element={<Sõnad/>} />
     </Routes>
     </div>
   );
