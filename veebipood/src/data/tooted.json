@@ -1,1 +1,8 @@
-["Nobe", "BMW", "Tesla"]
+[
+    {"nimi": "Nobe", "hind": 30000, "pilt": "https://upload.wikimedia.org/wikipedia/en/9/99/Nobe_GT100.jpg", "aktiivne": "true"}, 
+    {"nimi": "BMW", "hind": 40000, "pilt": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/BMW_G11_IMG_2002.jpg/1280px-BMW_G11_IMG_2002.jpg", "aktiivne": "true"}, 
+    {"nimi": "Bentley", "hind": 80000, "pilt": "https://upload.wikimedia.org/wikipedia/commons/f/f6/Bentley_Continental_GT_%28II%29_-_Frontansicht_%281%29%2C_30._August_2011%2C_D%C3%BCsseldorf_newbg.jpg", "aktiivne": "true"},
+    {"nimi": "Toyota", "hind": 60000, "pilt": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/2016_Toyota_Estima.jpg/1280px-2016_Toyota_Estima.jpg", "aktiivne": "true"},
+    {"nimi": "Nissan", "hind": 20000, "pilt": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Nissan_Ariya_Concept.jpg/2560px-Nissan_Ariya_Concept.jpg", "aktiivne": "true"},
+    {"nimi": "TESLA", "hind": 60000, "pilt": "https://upload.wikimedia.org/wikipedia/commons/8/82/Tesla_Model_S_%28Facelift_ab_04-2016%29_trimmed.jpg", "aktiivne": "true"}
+]

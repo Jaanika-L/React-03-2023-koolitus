@@ -10,80 +10,80 @@ function Poed() { // array    list   massiiv    väärtuste kogum
  }
 
   const sorteeriAZ = () => {
-    poed.sort();                  //default sorteerimine A-Z (sissekirjutatud) // poed.sort((a, b) => b.localeCompare(a));
+    poed.sort((a,b) => a.nimi.localeCompare(b.nimi));                  //default sorteerimine A-Z (sissekirjutatud) // poed.sort((a, b) => b.localeCompare(a));
       
     uuendaPoed(poed.slice()); // kustutab mälukoha/pärinemiskoha. Ei kustuta väärtusi. Reacti omapära
   }
     const sorteeriZA = () => {
-      poed.sort((a,b) => b.localeCompare(a)); //mittedeafualt sorteerimine: (a,b) => TINGIMUST mille alusel sorteerida
-      uuendaPoed(poed.slice());
+      poed.sort((a,b) => b.nimi.localeCompare(a.nimi)); //mittedeafualt sorteerimine: (a,b) => TINGIMUST mille alusel sorteerida
+      uuendaPoed(poed.slice()); //.nimi tuleb poed.jsonist
 
   }
 
   const sorteeriTahedKas =() => {
-    poed.sort ((a,b) => a.length - b.length);
+    poed.sort ((a,b) => a.nimi.length - b.nimi.length);
     uuendaPoed (poed.slice());
 
   }
 
   const sorteeriTahedKah = () => {
-    poed.sort ((a,b) => b.length - a.length);
+    poed.sort ((a,b) => b.nimi.length - a.nimi.length);
     uuendaPoed (poed.slice());
   }
 const sorteeriKolmasTaht = () => {
-    poed.sort((a,b) => a[2].localeCompare(b[2]));
+    poed.sort((a,b) => a.nimi[2].localeCompare(b.nimi[2]));
     uuendaPoed (poed.slice());
 
 }
 const filtreeriElopus = () => {
-  const tulem = poed.filter(element => element.endsWith ("e"));
+  const tulem = poed.filter(element => element.nimi.endsWith ("e"));
   uuendaPoed (tulem);
 }
 const filtreeriKellel9Tahte = () => {
-const tulem = poed.filter(element => element.length === 9);
+const tulem = poed.filter(element => element.nimi.length === 9);
 uuendaPoed(tulem);
 
 }
 const filtreeriKellelVahemalt7Tahte = () => {
-  const tulem = poed.filter(element => element.length > 7);
+  const tulem = poed.filter(element => element.nimi.length > 7);
   uuendaPoed(tulem);
 }
 const filtreeriSisaldabTaheLyhenditIs = () => {
-  const tulem = poed.filter(element => element.includes ("is"));
+  const tulem = poed.filter(element => element.nimi.includes ("is"));
   uuendaPoed(tulem);
 }
 const filtreeriKolmasTahtI = () => {
-  const tulem = poed.filter(element => element[2] === "i" );
+  const tulem = poed.filter(element => element.nimi[2] === "i" );
   uuendaPoed(tulem);
 }
-
+//map on asendamine .nimi käib keerulisemalt returniga. 
 const muudaKoikSuureks = () => {
-  const tulem = poed.map(yksPood => yksPood.toUpperCase());
+  const tulem = poed.map(yksPood => {return{ "nimi":yksPood.nimi.toUpperCase(), "tel": yksPood.tel}});
   uuendaPoed(tulem);
 }
 const muudaKoikVaikesteks =  ()=> {
-  const tulem = poed.map(yksPood => yksPood.toLowerCase());
+  const tulem = poed.map(yksPood => {return{ "nimi":yksPood.nimi.toLowerCase(), "tel": yksPood.tel}});
   uuendaPoed(tulem);
 
 }
 const muudaKoikOTaheks = () => {
-  const tulem = poed.map(yksPood => yksPood.replaceAll("i", "o"));
+  const tulem = poed.map(yksPood => {return {"nimi": yksPood.nimi.replaceAll("i", "o"), "tel": yksPood.tel}});
   uuendaPoed(tulem);
 
 }
 const muudaKoikideleKriipsEtte = () => {
-  const tulem = poed.map(yksPood => "--" + yksPood);
+  const tulem = poed.map(yksPood => {return { nimi: "--" + yksPood.nimi, "tel": yksPood.tel}});
   uuendaPoed(tulem);
 
 }
 const muudaKoikidelKolmasTahtMTaheks = () => {
-  const tulem = poed.map(yksPood => yksPood + yksPood.length);
+  const tulem = poed.map(yksPood => {return{ "nimi":yksPood.nimi + yksPood.nimi.length, "tel": yksPood.tel}});
   uuendaPoed(tulem);
 
 }
   const arvutaTahedKokku = () => {
     let summa = 0;
-    poed.forEach(element => summa = summa + element.length);
+    poed.forEach(element => summa = summa + element.nimi.length);
     return summa;
 
   }
@@ -113,16 +113,10 @@ const muudaKoikidelKolmasTahtMTaheks = () => {
       <button onClick={muudaKoikOTaheks}> Muuda kõikidel i täht o tähtedeks</button>
       <button onClick={muudaKoikideleKriipsEtte}>Muuda kõikidele "--" ette</button>
       <button onClick={muudaKoikidelKolmasTahtMTaheks}>Muuda kõikidele sõna pikkused numbrid lõppu</button>
-      {poed.map ((yksPood, i ) => <div key={i}>{yksPood}</div>)}  {/* {poed} siis kirjutab järjest aga ei ole sobilik - koodi kasutatakse */}
+     
+      {poed.map ((yksPood, i ) => <div key={i}>{yksPood.nimi}: {yksPood.tel}</div>)}  {/* {poed} siis kirjutab järjest aga ei ole sobilik - koodi kasutatakse */}
   
-      <div>-------------------</div>
-      <div>Ülemiste</div>
-      <div>Viimsi</div>
-      <div>Rocca al Mare</div>
-      <div>Magistrali</div>
-      <div>Vesse</div>
-      <div>Kristiine</div>
-      <div>Järveotsa</div>
+      
     </div>
   )
 }

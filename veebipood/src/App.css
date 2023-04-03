@@ -44,3 +44,13 @@
     color:black
 
   }
+  .aktiivne-toode {
+    border: 1px solid green;
+    background-color: rgb(235, 243, 235);
+
+  }
+
+  .mitteaktiivne-toode {
+    border: 1px solid red;
+    background-color: rgb(241, 231, 231);
+  }

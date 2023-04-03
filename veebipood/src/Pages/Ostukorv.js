@@ -12,7 +12,7 @@ function Ostukorv() {
   }
 
   const kustuta = (jarjekorranumber) => { //järjekorra nr on JavaS nullist alustav
-    ostukorv.splice(jarjekorranumber); // vasakpoolne nr tähendab mitmendat ma kustutan, parempoolne mitu tk ma kustutan
+    ostukorv.splice(jarjekorranumber,1); // vasakpoolne nr tähendab mitmendat ma kustutan, parempoolne mitu tk ma kustutan
     uuendaOstukorv(ostukorv.slice());
   }
 
@@ -22,14 +22,22 @@ function Ostukorv() {
     //uuendaOstukorv(ostukorvfailist) - võib ka kasutada
   } 
 
+  const arvutaKoguSumma = () =>{
+    let summa = 0;
+    ostukorv.forEach(toode => summa = summa + toode.hind);
+    return summa;
+  }
+  
   return (
     <div>
       {/* vasakul pool pean ütlema, mis tingimustel OM NÄHTAV */}
-      { ostukorv.length > 0 && <button onClick={tyhjenda}> Tühjenda</button> } // 
+      { ostukorv.length > 0 && <button onClick={tyhjenda}> Tühjenda</button> } 
       { ostukorv.length > 0 && <div>Ostukorvis esemeid kokku : {ostukorv.length} tk </div> }
       {ostukorv.map((toode, jrkNr) => 
         <div key={jrkNr}>
-          {toode}
+          <img className="pilt"src={toode.pilt} alt="" />
+          {toode.nimi}
+          {toode.hind}
           <button onClick={() => lisa(toode)}>+</button>
           <button onClick={()=>kustuta(jrkNr)}>-</button>
         </div>
@@ -37,6 +45,7 @@ function Ostukorv() {
 
         
       { ostukorv.length === 0 && <div>Ostukorv on tühi. <Link to="/"> Tooteid lisama. </Link></div>} 
+      <div> Kokku: {arvutaKoguSumma()} €</div>
     </div>
   )
 }
