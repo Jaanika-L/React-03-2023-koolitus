@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import 'react-toastify/dist/ReactToastify.css'; //peab panema alumise cssi ees. Võetaksenpmjs.com veebilehelt
+import 'react-toastify/dist/ReactToastify.css'; //peab panema alumise cssi ees. Võetakse npmjs.com veebilehelt
 import './index.css'; // alumine on tähtsam, alumine kirjutab ülemise üle
 import App from './App';
 import { BrowserRouter} from "react-router-dom";
