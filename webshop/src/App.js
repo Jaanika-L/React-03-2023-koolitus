@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Route, Routes, Link } from 'react-router-dom';
 import HomePage from './Pages/global/HomePage';
 import Cart from './Pages/global/Cart';
-import ContactUs from './Pages/global/ContactUs';
+import {ContactUs} from './Pages/global/ContactUs';
 import Shops from './Pages/global/Shops';
 import SingleProduct from './Pages/global/SingleProduct';
 import AdminHome from './Pages/admin//AdminHome';
@@ -48,6 +48,8 @@ function App() {
           <img className="lang" src="/english.png" alt=""  onClick={() => updateLanguage ("en")} /> 
       {/* enne oli buttoniga onClick */}
           <img className='lang' src="/estonia.png" alt="" onClick={() => updateLanguage ("ee")} />
+          <img className='lang' src="/russia.png" alt="" onClick={() => updateLanguage ("ru")} />
+          <img className='lang' src="/france.png" alt="" onClick={() => updateLanguage ("fr")} />
           
         </Container>
       </Navbar>
@@ -57,7 +59,7 @@ function App() {
   <Route path ="cart" element= {<Cart /> }/>
   <Route path ="contact" element= {<ContactUs /> }/>
   <Route path ="shops" element= {<Shops /> }/>
-  <Route path ="product" element= {<SingleProduct /> }/>
+  <Route path ="product/:no" element= {<SingleProduct /> }/>
   <Route path ="admin" element= {<AdminHome /> }/>
   <Route path ="admin/add-product" element= {<AddProduct /> }/>
   <Route path ="admin/edit-product/:id" element= {<EditProduct /> }/>

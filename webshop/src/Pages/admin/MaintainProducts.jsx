@@ -1,20 +1,33 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import productsFromFile from "../../data/products.json"
 import { Link } from 'react-router-dom';
 
 function MaintainProducts() {
 const [products, setProducts]=useState(productsFromFile)
+const searchedRef = useRef();
 
-const deleteProduct = () =>
+
+const deleteProduct = (index) => {
+  productsFromFile.splice(index, 1);
+  setProducts(productsFromFile.slice());
+}
 //testige
 //refreshiga tuleb tagasi
-  setProducts();
+
+const searchFromProducts = () => {
+  // console.log(searchedRef.current.value);
+  const result = productsFromFile.filter(element => 
+    element.name.toLowerCase().includes(searchedRef.current.value.toLowerCase()));
+  setProducts(result);
+
+}
+  
   
 return (
   <div>
- 
+      <input type="text" ref={searchedRef} onChange={searchFromProducts} />
   <div>{products.length} tk </div>
-  {productsFromFile.map(product => 
+  {products.map((product, index) => 
  <div key={product.id}> 
  <img src={product.image} alt="" />
     <div>{product.id}</div>
@@ -25,7 +38,7 @@ return (
     <div>{product.description}</div>
     <div>{product.actiove}</div>
     <div>{product.id}</div>
-    <button onClick={deleteProduct}>Kustuta</button>
+    <button onClick={()=>deleteProduct(index)}>Kustuta</button>
     <Link to={"/admin/edit-product/" + product.id }>
       <button>Muuda</button>
     </Link>
