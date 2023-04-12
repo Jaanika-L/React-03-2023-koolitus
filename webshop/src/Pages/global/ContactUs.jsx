@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export const ContactUs = () => {
   const form = useRef();
@@ -16,14 +18,16 @@ export const ContactUs = () => {
   };
 
   return (
-    <form ref={form} onSubmit={sendEmail}>
-      <label>Name</label>
-      <input type="text" name="from_name" />
-      <label>Email</label>
-      <input type="email" name="from_email" />
-      <label>Message</label>
-      <textarea name="message" />
-      <input type="submit" value="Send" />
+    <form className='center' ref={form}>
+      <br /><br />
+      <TextField id="from_name" label="Name" variant="outlined" />
+      <br />  <br />
+      <TextField id="from_email" label="E-mail" variant="outlined" />
+      <br /> <br />
+      <TextField id="from_message" label="Message" variant="outlined" />
+      <br /> <br />
+     <Button variant = "contained" onClick={sendEmail}>Send</Button>
+      
     </form>
   );
 };

@@ -1,34 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function Avaleht() {
+
+
+
+	const tegelased = [
+
+		{eesnimi: "Mickey", perekonnanimi: "Mouse", elukoht: "Disneyland"},
+		{eesnimi: "Minnie", perekonnanimi: "Mouse", elukoht: "Disneyland"},
+		{eesnimi: "Winnie", perekonnanimi: "Pooh", elukoht: "Hundred Acre Wood"},
+		{eesnimi: "Roo", perekonnanimi: "Kangaroo", elukoht: "Hundred Acre Wood"},
+		{eesnimi: "Scooby", perekonnanimi: "Doo", elukoht: "Crystal Cove"}
+	];
+
+	const [klikitudNimi, uuendaKlikitudNimi] = useState("");
+
+
+	const kuvaNimi = (tegelane) => {
+		// console.log(tegelane.eesnimi)
+		uuendaKlikitudNimi(tegelane.eesnimi);
+	}
+
   return (
-<div> 
-    <div>A</div>
-    <div>
-	<div>Mickey</div>
-<div>Mouse</div>
-<div>Disneyland</div>
-</div>
+	
 <div>
-	<div>Minnie</div>
-<div>Mouse</div>
-<div>Disneyland</div>
-</div>
-<div>
-	<div>Winnie</div>
-<div>Pooh</div>
-<div>Hundred Acre Wood</div>
-</div>
-<div>
-	<div>Roo</div>
-<div>Kangaroo</div>
-<div>Hundred Acre Wood</div>
-</div>
-<div>
-	<div>Scooby</div>
-<div>Doo</div>
-<div>Crystal Cove</div>
-</div>
+	{ klikitudNimi !== "" && <div>Klikkisid tegelase {klikitudNimi} peal</div>}
+	 {tegelased.map(tegelane => 
+	 <div>
+	 	<div>{tegelane.eesnimi}</div>
+	 	<div>{tegelane.perekonnanimi}</div>
+	 	<div>{tegelane.elukoht}</div>
+		<button onClick={()=> kuvaNimi(tegelane)}>Kuva nimi</button>
+	 </div>)}
 </div>   
 
  

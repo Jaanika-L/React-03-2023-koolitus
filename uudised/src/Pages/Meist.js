@@ -10,17 +10,24 @@ const tootajad = [
     {nimi: "Kerli Kõiv", ala: "Välisturg", telefon: '+12345678'}
     
 ]
+    const [valitud, uuendaValitud] = useState ("");
+
+    const v6taYhendust = (tootaja) => {
+        n2itaKontakt(tootaja.telefon);
+        uuendaValitud(tootaja.nimi);
+    }
 
     return ( 
     <div>
         <div>See on meist leht, nähtlocalhost:3000/meist aadressilav</div>
         <div>Meie töötajad</div>
+        VALITUD INIMENE: {valitud}
         <br />
         <div> {tootajad.map(tootaja =>
-            <div>
+            <div className={tootaja.nimi === valitud ? "valitud" : undefined} >
                 <div>{tootaja.nimi}</div>
                 <div>{tootaja.ala}</div> 
-                <button onClick={()=> n2itaKontakt(tootaja.telefon)}>Võta ühendust</button> 
+                <button onClick={()=> v6taYhendust(tootaja)}>Võta ühendust</button> 
             </div>)}
     </div>
 

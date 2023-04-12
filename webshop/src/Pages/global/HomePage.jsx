@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import productsFromFile from "../../data/products.json"
 // import cartFile from "../../data/cart.json" -enam ei kasuta, nüüd kasutame localStoreaget
 import { Link } from 'react-router-dom'
+import Button from '@mui/material/Button';
+import { ToastContainer, toast } from 'react-toastify';
 
 //SALVESTUSE VARIANDID
 // 1.Andmebaas - peame võtma väliseteenuse nt Amazon, Microsoft, Oracle
@@ -14,8 +16,18 @@ function HomePage() {
   
   const addToCart = (clickedProduct) => {
       const cart =JSON.parse(localStorage.getItem("cart")) || []; //JSON.pars - localStorage nõuab
-      cart.push(clickedProduct);
+      
+      const index =  cart.findIndex(element => element.product.id === clickedProduct.id);
+      if (index >= 0) {
+        // siis kui ostukorvis on juba see toode
+        cart[index].quantity = cart[index].quantity +1;
+      } else {
+        //siis kui ostukorvis pole seda toodet
+        cart.push({"product":clickedProduct, "quantity": 1});
+      }
+      
       localStorage.setItem("cart", JSON.stringify(cart));
+      toast.success("Successfully added to cart!");
   // cartFile.push(clickedProduct); - oli enne
   //Lisage toast, sisuga: "Successfully added to cart"
   }
@@ -40,9 +52,7 @@ function HomePage() {
     setProducts(products.slice());
   }
 
-  
-
-  
+  // const filterProductsByCategory =(categoryClicked) => {}
   // 1. uus fail "data" kausta sisse
   // 2. cart.json -> sisse tühi array
   // 3. siin impordime ja lisame ühe toote sinna sisse
@@ -51,10 +61,11 @@ function HomePage() {
 
   return (
     <div>
-      <button onClick={SortAZ}>Sort A-Z</button>
-      <button onClick={sortZA}>Sort Z-A</button>
-      <button onClick={sortPriceAsc}>Sort price asc</button>
-      <button onClick={sortPriceDesc}>Sort price desc</button>
+      <Button onClick={SortAZ}>Sort A-Z</Button>
+      <Button onClick={sortZA}>Sort Z-A</Button>
+      <Button onClick={sortPriceAsc}>Sort price asc</Button>
+      <Button onClick={sortPriceDesc}>Sort price desc</Button>
+
       <div>{products.length} tk </div>
       {productsFromFile.map(product => 
      <div key={product.id}> 
@@ -62,11 +73,15 @@ function HomePage() {
           {/* järjekord võib muutuda, ohtlik saata järjekorra numbrit urli */}
             <img src={product.image} alt="" />
             <div>{product.name}</div>
-            <div>{product.price}</div>
+            <div>{product.price.toFixed(2)}</div>
           </Link>
-        <button onClick={() => addToCart(product)}>Lisa ostukorvi</button>
+        <Button variant="contained" onClick={() => addToCart(product)}>Lisa ostukorvi</Button>
       </div>
       )}
+      <ToastContainer
+      position="bottom-right"
+      theme="dark"
+      />
     </div>
   )
 }

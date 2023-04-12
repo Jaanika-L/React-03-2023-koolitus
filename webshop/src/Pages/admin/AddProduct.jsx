@@ -1,33 +1,59 @@
 
- import React, { useRef, useState } from 'react'
- import productsFromFile from "../../data/products.json"
+import React, { useRef, useState } from 'react'
+import productsFromFile from "../../data/products.json"
 
 function AddProduct() {
   const [message, setMessage] = useState("Lisa toode!");
-   const idRef=useRef();
-   const nameRef=useRef();
-   const priceRef=useRef();
-   const imageRef = useRef();
-   const categoryRef=useRef();
-   const descriptionRef=useRef();
-   const activeRef=useRef();
+  const idRef = useRef();
+  const nameRef = useRef();
+  const priceRef = useRef();
+  const imageRef = useRef();
+  const categoryRef = useRef();
+  const descriptionRef = useRef();
+  const activeRef = useRef();
+  const [isIdUnique, setIdUnique] = useState(true);
 
-   const add = () => {
-    if (nameRef.current.value === "") {
-        setMessage("Product has empty value, cant add!")
-    } else {
-      setMessage("Product " + nameRef.current.value + " added!");
-      productsFromFile.push ({
-        "id": Number(idRef.current.value),
-        "name": nameRef.current.value,
-        "price": Number(priceRef.current.value),
-        "image": imageRef.current.value,
-        "category": categoryRef.current.value,
-        "description": descriptionRef.current.value,
-        "active":activeRef.current.checked
-      });
+  const add = () => {
+    if (idRef.current.value === "") {
+      setMessage("Id has empty value, cant add!")
+      return;
     }
-   }
+
+    if (nameRef.current.value === "") {
+      setMessage("Name has empty value, cant add!")
+      return;
+    }
+
+    if (priceRef.current.value === "") {
+      setMessage("Price has empty value, cant add!")
+      return;
+    }
+
+    // } else {
+    setMessage("Product " + nameRef.current.value + " added!");
+    productsFromFile.push({
+      "id": Number(idRef.current.value),
+      "name": nameRef.current.value,
+      "price": Number(priceRef.current.value),
+      "image": imageRef.current.value,
+      "category": categoryRef.current.value,
+      "description": descriptionRef.current.value,
+      "active": activeRef.current.checked
+    });
+    // }
+  }
+
+  const checkIdUniqueness = () => {
+
+    const index = productsFromFile.findIndex(product => product.id === Number(idRef.current.value));
+    if (index === -1) {
+      setIdUnique(true);
+    } else {
+      setIdUnique(false);
+
+    }
+
+  }
 
   //pange faili juurde kõige lõppu .push abil ---> testige
   //refreshiga kaob ära
@@ -35,9 +61,10 @@ function AddProduct() {
 
   return (
     <div>
+      {isIdUnique === false && <div>Entered ID is not unique!</div>}
       <div>{message}</div>
       <label>Product id</label> <br />
-      <input ref={idRef} type="number" /> <br />
+      <input onChange={checkIdUniqueness} ref={idRef} type="number" /> <br />
       <label>Product name</label> <br />
       <input ref={nameRef} type="text" /> <br />
       <label>Product price</label> <br />
@@ -50,7 +77,7 @@ function AddProduct() {
       <input ref={descriptionRef} type="text" /> <br />
       <label>Product activness</label> <br />
       <input ref={activeRef} type="checkbox" /> <br />
-      <button onClick={add}>Add</button>
+      <button disabled={isIdUnique === false} onClick={add}>Add</button>
 
     </div>
   )

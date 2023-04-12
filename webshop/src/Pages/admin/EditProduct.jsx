@@ -41,6 +41,11 @@ const idRef=useRef();
   // Nii muutmised kui ka kustutamised käivad AINULT järjekorranumbri alusel
 
     const checkIdUniqueness = () => {
+
+      if(idRef.current.value === id) {
+        setIdUnique(true);
+        return;
+      }
       // -1 productsFromFile.findIndex(product => product.id === idRef.current.value);
       //  undefined productsFromFile.find(product => product.id === idRef.current.value);
       // []productsFromFile.filter(product => product.id === idRef.current.value)[0];  

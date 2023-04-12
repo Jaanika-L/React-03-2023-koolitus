@@ -1,59 +1,26 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import enFile from "./i18n/en.json"
+import eeFile from "./i18n/ee.json"
+import frFile from "./i18n/fr.json"
+import ruFile from "./i18n/ru.json"
 
 // the translations
 // (tip move them in a JSON file and import them,
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const resources = {
   en: {
-    translation: {
-      "admin": "To admin view",
-      "contact": "Contact Us",
-      "shops": "Our shops",
-      "cart": "Cart",
-      "maintain-categories": "Maintain categories",
-      "maintain-shops": "Maintain shops",
-      "add-product": "Add product",
-      "maintain-products": "Maintain products"
-    }
+    translation: enFile
   },
   ee: {
-    translation: {
-      "admin": "Administraatori vaatesse",
-      "contact": "Kontakteeru meiega",
-      "shops": "Meie poed",
-      "cart": "Ostukorv",
-      "maintain-categories": "Halda kategooriaid",
-      "maintain-shops": "Halda poode",
-      "add-product": "Lisa toode",
-      "maintain-products": "Halda tooteid"
-    }
+    translation: eeFile
 
   },
   fr: {
-    translation: {
-      "admin": "Vue de l'administrateur",
-      "contact": "Contactez-nous",
-      "shops": "Nos magasins",
-      "cart": "Panier",
-      "maintain-categories": "Gérer les catégories",
-      "maintain-shops": "Gérer les magasins",
-      "add-product": "Ajouter un produit",
-      "maintain-products": "Gérer les produits"
-    }
-
+    translation: frFile
   },
   ru: {
-    translation: {
-      "admin": "Панель администратора",
-      "contact": "Связаться с нами",
-      "shops": "Наши магазины",
-      "cart": "Корзина",
-      "maintain-categories": "Управление категориями",
-      "maintain-shops": "Управление магазинами",
-      "add-product": "Добавить товар",
-      "maintain-products": "Управление товарами"
-    }
+    translation: ruFile
 
   },
   
