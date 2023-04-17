@@ -3,6 +3,7 @@ import './App.css';
 import Avaleht from './Pages/Avaleht';
 import LisaArvuti from './Pages/LisaArvuti';
 import VaataArvuteid from './Pages/VaataArvuteid';
+import Ostukorv from './Pages/Ostukorv';
 
 function App() {
   return (
@@ -10,16 +11,20 @@ function App() {
       <Link to='/'>
         <button>Avalehele</button>
       </Link>
-      <Link to='all'>
+      <Link to='/all'>
         <button>Vaata sülearvuteid</button>
       </Link>
-      <Link to='add'>
+      <Link to='/add'>
         <button>Lisa sülearvuteid</button>
+      </Link>
+      <Link to='/cart'>
+        <button>Ostukorv</button>
       </Link>
       <Routes>
         <Route path='' exact element={ <Avaleht /> } />
         <Route path='all' exact element={ <VaataArvuteid/> } />
         <Route path='add' exact element={ <LisaArvuti/> } />
+        <Route path='cart' exact element={ <Ostukorv/> } />
       </Routes>
        
     </div>

@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useRef } from 'react'
 // import cartFile from "../../data/cart.json" //nüüd peame võtma localStoraget
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import "../../css/Cart.css";
 import Button from '@mui/material/Button';
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
+  const [parcelMachines, setParcelMachines] = useState ([]) //mida välja  näitan - 5, 2, 10, 500, 1255
+  const [dbparcelMachines, setDbParcelMachines] = useState ([]) // milleseest filterdan ---- aalati 1255
+
+  const searchedRef = useRef();
+
+  // API endpoint   API otspunkt -reaalajast andmete võtmine
+  useEffect(() => {
+    fetch("https://www.omniva.ee/locations.json")
+    .then ( response => response.json())
+    .then(json => {
+      setParcelMachines(json);
+      setDbParcelMachines(json);
+    })
+      
+    
+  }, []);
 
   //ostukorvi fail välja kuvada:
   // üles useState
@@ -60,6 +76,11 @@ function Cart() {
   }
   // dünaamika - kui in 0 ostukorvi kogus, siis ei näidata "tühjendat" ja "kogusummat"
 
+  const searchFromParcelMachines = () => {
+    const result = dbparcelMachines.filter (el => 
+      el.NAME.toLowerCase().includes(searchedRef.current.value.toLowerCase()));
+    setParcelMachines(result);
+  }
 
   return (
     <div>
@@ -90,6 +111,15 @@ function Cart() {
       {cart.length > 0 &&
         <div className='cart-bottom'>
           Total Amount: {totalSum()} €
+
+          <input ref={searchedRef} onChange={searchFromParcelMachines} type="text" />
+
+          <select>
+            { parcelMachines
+            .filter (el => el.A0_NAME === "EE")
+            .map(el => <option>{el.NAME}</option>)}
+            
+          </select>
         </div>
       }
       {cart.length === 0 &&
