@@ -17,3 +17,6 @@ code {
 * {
   font-family: 'Source Sans Pro', sans-serif;
 }
+th, td {
+  border: 1px solid black
+}

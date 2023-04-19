@@ -4,6 +4,9 @@ import productsFromFile from "../../data/products.json"
 import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import { ToastContainer, toast } from 'react-toastify';
+import Carousel from 'react-bootstrap/Carousel';
+import "../../css/HomePage.css";
+
 
 //SALVESTUSE VARIANDID
 // 1.Andmebaas - peame võtma väliseteenuse nt Amazon, Microsoft, Oracle
@@ -52,7 +55,11 @@ function HomePage() {
     setProducts(products.slice());
   }
 
-  // const filterProductsByCategory =(categoryClicked) => {}
+  const filterProductsByCategory =(categoryClicked) => {
+    const filteredProducts = productsFromFile.filter(product => product.category === categoryClicked)
+    setProducts(filteredProducts);
+    
+  }
   // 1. uus fail "data" kausta sisse
   // 2. cart.json -> sisse tühi array
   // 3. siin impordime ja lisame ühe toote sinna sisse
@@ -61,14 +68,55 @@ function HomePage() {
 
   return (
     <div>
+       <Carousel>
+      <Carousel.Item>
+        <img
+          src="https://picsum.photos/id/237/500/200"
+          alt="First slide"
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          src="https://picsum.photos/id/337/500/200"
+          alt="Second slide"
+        />
+
+        <Carousel.Caption>
+          <h3>Second slide label</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          src="https://picsum.photos/id/437/500/200"
+          alt="Third slide"
+        />
+
+        <Carousel.Caption>
+          <h3>Third slide label</h3>
+          <p>
+            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+          </p>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+
       <Button onClick={SortAZ}>Sort A-Z</Button>
       <Button onClick={sortZA}>Sort Z-A</Button>
       <Button onClick={sortPriceAsc}>Sort price asc</Button>
       <Button onClick={sortPriceDesc}>Sort price desc</Button>
+      <Button onClick={filterProductsByCategory}>Filter products by category</Button>
+
 
       <div>{products.length} tk </div>
+     {/* <div className='content'> */}
+     <div className='products'>
       {productsFromFile.map(product => 
-     <div key={product.id}> 
+     <div className='home-product' key={product.id}> 
           <Link to={"/product/" + product.id}> 
           {/* järjekord võib muutuda, ohtlik saata järjekorra numbrit urli */}
             <img src={product.image} alt="" />
@@ -78,6 +126,11 @@ function HomePage() {
         <Button variant="contained" onClick={() => addToCart(product)}>Lisa ostukorvi</Button>
       </div>
       )}
+      </div>
+      <div>
+        <img  className='add' src="https://picsum.photos/100/400?grayscale" alt="" />
+      {/* </div> */}
+     </div>
       <ToastContainer
       position="bottom-right"
       theme="dark"

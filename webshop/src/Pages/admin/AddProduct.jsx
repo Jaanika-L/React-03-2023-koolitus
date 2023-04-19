@@ -55,8 +55,7 @@ function AddProduct() {
 
   }
 
-  //pange faili juurde kõige lõppu .push abil ---> testige
-  //refreshiga kaob ära
+  
 
 
   return (

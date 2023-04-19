@@ -71,6 +71,7 @@ function App() {
 
 </Routes>
 
+<div className='footer' >FOOTER</div>
     </div>
   );
 }

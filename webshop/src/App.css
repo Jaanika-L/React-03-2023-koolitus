@@ -20,3 +20,22 @@
 .center {
   text-align: center;
 }
+.carousel {
+  width: 500px;
+  margin:auto;
+}
+
+.footer {
+  border-top: 1px solid gray;
+  height: 50px;
+  background-color: darkgrey;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}

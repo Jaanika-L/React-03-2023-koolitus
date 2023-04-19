@@ -9,6 +9,7 @@ import Uudised from './Pages/Uudised';
 import LisaUudis from './Pages/LisaUudis';
 import HaldaUudised from './Pages/HaldaUudised';
 import YksUudis from './Pages/YksUudis';
+import MuudaUudis from './Pages/MuudaUudis';
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
       <Link to='/halda'>
         <button>Halda uudiseid</button>
       </Link>
+      <Link to='/muuda'>
+        <button>Muuda uudiseid</button>
+      </Link>
       
 
 
@@ -42,6 +46,7 @@ function App() {
         <Route path='lisa-uudis' element= {<LisaUudis />}  />
         <Route path='halda' element= {<HaldaUudised />}  />
         <Route path='uudis/:index' element= {<YksUudis />}  />
+        <Route path='muuda/:index' element= {<MuudaUudis />}  />
       </Routes>
 
     </div>

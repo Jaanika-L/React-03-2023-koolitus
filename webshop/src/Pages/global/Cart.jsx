@@ -93,6 +93,7 @@ function Cart() {
       }
       {/* {cart.length > 0 && } */}
       {cart.map((element, index) =>
+      <div className='product-wrapper' >
         <div className='product' key={index}>
           <img
             className='image' src={element.product.image} alt="" />
@@ -107,14 +108,21 @@ function Cart() {
           {/* <button onClick={() => add (product)} >+</button> */}
           <img src="/delete.png" className='button' onClick={() => removeFromCart(index)} alt="" />
         </div>
+        <div className='mobile-view'>
+        <img src="/minus.png" className={element.quantity === 1 ? "disabled" : 'button'} disabled={element.quantity === 1} onClick={() => decreaseQuantity(index)} alt="" />
+        <div>{element.quantity}</div>
+        <img src="/plus.png" className='button' onClick={() => increaseQuantity(index)} alt="" />
+        </div>
+      </div>
       )}
       {cart.length > 0 &&
         <div className='cart-bottom'>
-          Total Amount: {totalSum()} €
+          <div className='sum'>Total Amount: {totalSum()} €</div>
+          
 
           <input ref={searchedRef} onChange={searchFromParcelMachines} type="text" />
 
-          <select>
+          <select className='parcelMachines' >
             { parcelMachines
             .filter (el => el.A0_NAME === "EE")
             .map(el => <option>{el.NAME}</option>)}
