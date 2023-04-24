@@ -56,8 +56,8 @@ function HomePage() {
   }
 
   const filterProductsByCategory =(categoryClicked) => {
-    const filteredProducts = productsFromFile.filter(product => product.category === categoryClicked)
-    setProducts(filteredProducts);
+    const filteredProducts = productsFromFile.filter((product) => product.category === categoryClicked)
+    setProducts(filteredProducts); 
     
   }
   // 1. uus fail "data" kausta sisse
@@ -105,11 +105,16 @@ function HomePage() {
       </Carousel.Item>
     </Carousel>
 
+
+      <Button onClick={()=> filterProductsByCategory("motorcycle")}>Motorcycles</Button>
+      <Button onClick={()=> filterProductsByCategory("motors")}>Motors</Button>
+      <Button onClick={()=> filterProductsByCategory("robot vacuum")}>Robot vacuums</Button>
+      <Button onClick={()=> filterProductsByCategory("stick vacuum")}>Stick vacuums</Button>
       <Button onClick={SortAZ}>Sort A-Z</Button>
       <Button onClick={sortZA}>Sort Z-A</Button>
       <Button onClick={sortPriceAsc}>Sort price asc</Button>
       <Button onClick={sortPriceDesc}>Sort price desc</Button>
-      <Button onClick={filterProductsByCategory}>Filter products by category</Button>
+    
 
 
       <div>{products.length} tk </div>
