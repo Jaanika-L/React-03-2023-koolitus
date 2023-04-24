@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
-import productsFromFile from "../../data/products.json"
+import React, { useEffect, useState } from 'react'
+// import productsFromFile from "../../data/products.json"
 // import cartFile from "../../data/cart.json" -enam ei kasuta, nüüd kasutame localStoreaget
 import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button';
 import { ToastContainer, toast } from 'react-toastify';
 import Carousel from 'react-bootstrap/Carousel';
 import "../../css/HomePage.css";
+import config from "../../data/config.json"
+import { Spinner } from 'react-bootstrap';
 
 
 //SALVESTUSE VARIANDID
@@ -15,7 +17,33 @@ import "../../css/HomePage.css";
     // - seda näen ainult mina. Ostukorv
 
 function HomePage() {
-  const [products, setProducts]=useState(productsFromFile)
+  const [products, setProducts]=useState([]) // kõikuv seisund
+  const [dbProducts, setDbProducts]=useState([]) // ALATI 240 toodet
+  const [isLoading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+
+
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => 
+      {setProducts(json || []); // pane vähemalt tühi array, siis ei lähe errorisse
+      setDbProducts(json || []);
+      setLoading(false);
+    }) // panime loogelised sulud, et teha mitu rida.
+    
+  }, []);
+
+  useEffect(() => {
+    fetch(config.categoriesDbUrl)
+    .then(res => res.json())
+    .then(json => 
+      {setCategories(json || []); // pane vähemalt tühi array, siis ei lähe errorisse
+      
+    }) // panime loogelised sulud, et teha mitu rida.
+    
+  }, []);
+  
   
   const addToCart = (clickedProduct) => {
       const cart =JSON.parse(localStorage.getItem("cart")) || []; //JSON.pars - localStorage nõuab
@@ -56,8 +84,11 @@ function HomePage() {
   }
 
   const filterProductsByCategory =(categoryClicked) => {
-    const filteredProducts = productsFromFile.filter((product) => product.category === categoryClicked)
+    const filteredProducts = dbProducts.filter((product) => product.category === categoryClicked)
     setProducts(filteredProducts); 
+    
+    // const filteredProducts = productsFromFile.filter((product) => product.category === categoryClicked)
+    // setProducts(filteredProducts);  <--- enne andmebaasi panekut. 
     
   }
   // 1. uus fail "data" kausta sisse
@@ -66,6 +97,9 @@ function HomePage() {
 
   // 4. Cart.jsx fail valmis teha sarnaselt eesti keelsega
 
+  if(isLoading === true) {
+  return <div className='center'> <br /> <br /> <Spinner/></div>
+}
   return (
     <div>
        <Carousel>
@@ -106,10 +140,7 @@ function HomePage() {
     </Carousel>
 
 
-      <Button onClick={()=> filterProductsByCategory("motorcycle")}>Motorcycles</Button>
-      <Button onClick={()=> filterProductsByCategory("motors")}>Motors</Button>
-      <Button onClick={()=> filterProductsByCategory("robot vacuum")}>Robot vacuums</Button>
-      <Button onClick={()=> filterProductsByCategory("stick vacuum")}>Stick vacuums</Button>
+      
       <Button onClick={SortAZ}>Sort A-Z</Button>
       <Button onClick={sortZA}>Sort Z-A</Button>
       <Button onClick={sortPriceAsc}>Sort price asc</Button>
@@ -118,9 +149,18 @@ function HomePage() {
 
 
       <div>{products.length} tk </div>
+      {categories.map(element => 
+      <Button onClick={()=> filterProductsByCategory(element.name)}>
+        {element.name}
+        </Button>)}
+
+      {/* <Button onClick={()=> filterProductsByCategory("motorcycle")}>Motorcycles</Button>
+      <Button onClick={()=> filterProductsByCategory("motors")}>Motors</Button>
+      <Button onClick={()=> filterProductsByCategory("robot vacuum")}>Robot vacuums</Button>
+      <Button onClick={()=> filterProductsByCategory("stick vacuum")}>Stick vacuums</Button> */}
      {/* <div className='content'> */}
      <div className='products'>
-      {productsFromFile.map(product => 
+      {products.map(product => 
      <div className='home-product' key={product.id}> 
           <Link to={"/product/" + product.id}> 
           {/* järjekord võib muutuda, ohtlik saata järjekorra numbrit urli */}

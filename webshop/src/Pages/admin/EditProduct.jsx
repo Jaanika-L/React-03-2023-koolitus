@@ -1,10 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import productsFromFile from "../../data/products.json"
+// import productsFromFile from "../../data/products.json"
+import config from "../../data/config.json"
+import { Spinner } from 'react-bootstrap';
 
 function EditProduct() {
 const { id } = useParams(); //id tuleb app.js,"admin/edit-product/:id" 
-const productFound = productsFromFile.find(oneProduct => oneProduct.id === Number(id));
+
+const [dbProducts, setDbProducts]=useState([])
+const productFound = dbProducts.find(oneProduct => oneProduct.id === Number(id));
+
 // leiab alati kõige esimesna ja kuvab nt "nobe"
 
 // const tulem = productsFromFile.filter(oneProduct => oneProduct.id === Number(id))[0];
@@ -18,9 +23,22 @@ const idRef=useRef();
   const descriptionRef=useRef();
   const activeRef=useRef();
   const navigate = useNavigate();
+  const [isIdUnique, setIdUnique] = useState(true); // Nii muutmised kui ka kustutamised käivad AINULT järjekorranumbri alusel
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => {
+      // {setProducts(json || []); 
+      setDbProducts(json || []);
+      setLoading(false);
+    }) 
+    
+  }, []);
 
   const edit = () => {
-    const index = productsFromFile.findIndex(oneProduct => oneProduct.id === Number(id))
+    const index = dbProducts.findIndex(oneProduct => oneProduct.id === Number(id))
     
     const newProduct = {
         "id": Number(idRef.current.value),
@@ -32,13 +50,15 @@ const idRef=useRef();
         "active": activeRef.current.checked,
     }
     
-    productsFromFile[index] = newProduct;
-    navigate("/admin/maintain-products")
+    dbProducts[index] = newProduct;
+    // UUENDAN ANDMEBAASIST
+    fetch (config.productsDbUrl, {"method": "PUT", "body": JSON.stringify(dbProducts)})
+    .then(() => navigate("/admin/maintain-products"))
   }
 
-    const [isIdUnique, setIdUnique] = useState(true);
+    
 
-  // Nii muutmised kui ka kustutamised käivad AINULT järjekorranumbri alusel
+  
 
     const checkIdUniqueness = () => {
 
@@ -50,7 +70,7 @@ const idRef=useRef();
       //  undefined productsFromFile.find(product => product.id === idRef.current.value);
       // []productsFromFile.filter(product => product.id === idRef.current.value)[0];  
       // idRef.current.value
-      const index =  productsFromFile.findIndex(product => product.id === Number(idRef.current.value));
+      const index =  dbProducts.findIndex(product => product.id === Number(idRef.current.value));
       if (index === -1) {
         setIdUnique(true);
       } else {
@@ -59,10 +79,15 @@ const idRef=useRef();
       }
 
     }
+
+    if(isLoading === true) {
+      return <Spinner/>
+    }
 return (
     <div>
       {isIdUnique === false && <div>Entered ID is not unique!</div>}
-        <label>ID</label> <br />
+       {productFound !== undefined && <div>
+       <label>ID</label> <br />
         <input ref={idRef} onChange={checkIdUniqueness} defaultValue={productFound.id} type="number" /> <br />
         <label>Name</label> <br />
         <input ref={nameRef} defaultValue={productFound.name} type="text" /> <br />
@@ -77,6 +102,8 @@ return (
         <label>Active</label> <br />
         <input ref={activeRef} defaultChecked={productFound.active} type="checkbox" /> <br />
         <button disabled={isIdUnique === false} onClick={edit}>Edit</button>
+       </div>}
+       {productFound === undefined && <div>Product not found</div>}
     </div>
   )
 }

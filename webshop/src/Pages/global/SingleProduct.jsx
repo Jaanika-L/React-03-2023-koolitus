@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import productsFromFile from "../../data/products.json"
+// import productsFromFile from "../../data/products.json"
+import config from "../../data/config.json"
+import { Spinner } from 'react-bootstrap';
 
 // EI TOHI TEHA productsFromFile[id]
 // product.id abil leiab alati õige
@@ -9,9 +11,24 @@ import productsFromFile from "../../data/products.json"
 
 function SingleProduct() {
   const { id } = useParams()
+  const [isLoading, setLoading] = useState(true);
 
+  const [dbProducts, setDbProducts]=useState([])
+  const found = dbProducts.find(element => element.id === Number(id));
+   
+  useEffect(() => {
+    fetch(config.productsDbUrl)
+    .then(res => res.json())
+    .then(json => {
+      setDbProducts(json || []);
+      setLoading(false);
+    }) //localStorage.getItem "VÕTI" || []
+    
+  }, []);
 
-  const found = productsFromFile.find(element => element.id === Number(id));
+  if(isLoading === true) {
+    return <Spinner/>
+  }
 
   return (
     <div>
