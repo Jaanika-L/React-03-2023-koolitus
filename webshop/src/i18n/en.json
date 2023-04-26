@@ -1,10 +1,15 @@
 {
-    "admin": "To admin view",
+    "terms": "Welcome to our page",
+    "nav": {
+      "admin": "To admin view",
     "contact": "Contact Us",
     "shops": "Our shops",
-    "cart": "Cart",
+    "cart": "Cart"
+    },
+    "admin": {
     "maintain-categories": "Maintain categories",
     "maintain-shops": "Maintain shops",
     "add-product": "Add product",
     "maintain-products": "Maintain products"
+    }
   }

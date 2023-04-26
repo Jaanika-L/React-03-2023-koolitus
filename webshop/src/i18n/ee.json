@@ -1,10 +1,15 @@
 {
-    "admin": "Administraatori vaatesse",
+    "terms": "Tere tulemast meie veebilehele" , 
+    "nav": {
+      "admin": "Administraatori vaatesse",
     "contact": "Kontakteeru meiega",
     "shops": "Meie poed",
-    "cart": "Ostukorv",
+    "cart": "Ostukorv"
+    },
+    "admin": {
     "maintain-categories": "Halda kategooriaid",
     "maintain-shops": "Halda poode",
     "add-product": "Lisa toode",
     "maintain-products": "Halda tooteid"
+    }
   }
