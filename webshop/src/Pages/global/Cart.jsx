@@ -1,28 +1,21 @@
-import React, { useRef } from 'react'
 // import cartFile from "../../data/cart.json" //nüüd peame võtma localStoraget
-import { useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import "../../css/Cart.css";
+import styles from "../../css/Cart.module.css";
 import Button from '@mui/material/Button';
+import ParcelMachine from '../../components/cart/ParcelMachine';
+import Payment from '../../components/cart/Payment';
+import { CartSumContext } from '../../store/CartSumContext';
 
 function Cart() {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
-  const [parcelMachines, setParcelMachines] = useState ([]) //mida välja  näitan - 5, 2, 10, 500, 1255
-  const [dbparcelMachines, setDbParcelMachines] = useState ([]) // milleseest filterdan ---- aalati 1255
+  const { setCartSum } = useContext(CartSumContext);
+  
+  //SIIN OLI ENNE PARCELMACHINE.JSX!!!!!!! 
 
-  const searchedRef = useRef();
 
   // API endpoint   API otspunkt -reaalajast andmete võtmine
-  useEffect(() => {
-    fetch("https://www.omniva.ee/locations.json")
-    .then ( response => response.json())
-    .then(json => {
-      setParcelMachines(json);
-      setDbParcelMachines(json);
-    })
-      
-    
-  }, []);
+
 
   //ostukorvi fail välja kuvada:
   // üles useState
@@ -37,6 +30,7 @@ function Cart() {
   const emptyCart = () => {
     setCart([]); // uuendab HTMLi
     localStorage.setItem("cart", JSON.stringify([])); // uuendab LocalStoraget
+    setCartSum("0.00")
   }
 
   const decreaseQuantity = (index) => {
@@ -47,6 +41,7 @@ function Cart() {
     cart[index].quantity = cart[index].quantity - 1;
     setCart(cart.slice());
     localStorage.setItem("cart", JSON.stringify(cart));
+    setCartSum(totalSum())
 
   }
 
@@ -54,6 +49,7 @@ function Cart() {
     cart[index].quantity = cart[index].quantity + 1;
     setCart(cart.slice());
     localStorage.setItem("cart", JSON.stringify(cart));
+    setCartSum(totalSum())
 
   }
 
@@ -64,6 +60,7 @@ function Cart() {
     cart.splice(jarjekorranumberEhkIndex, 1);
     setCart(cart.slice()); //uuendab HTMLi
     localStorage.setItem("cart", JSON.stringify(cart)); //uuendab LocalStoraget
+    setCartSum(totalSum())
   }
 
 
@@ -76,48 +73,16 @@ function Cart() {
   }
   // dünaamika - kui in 0 ostukorvi kogus, siis ei näidata "tühjendat" ja "kogusummat"
 
-  const searchFromParcelMachines = () => {
-    const result = dbparcelMachines.filter (el => 
-      el.NAME.toLowerCase().includes(searchedRef.current.value.toLowerCase()));
-    setParcelMachines(result);
-  }
 
-  const pay = ()=> {
-    const url ="https://igw-demo.every-pay.com/api/v4/payments/oneoff";
 
-    const paymentData = {
-    
-        "api_username": "e36eb40f5ec87fa2",
-        "account_name": "EUR3D1",
-        "amount": totalSum(),
-        "order_reference": Math.random() * 999999, //map.random - juhuliku numbri generaator 0-9
-        "nonce": "asd123456sdfgh23" + Math.random * 999999 + new Date(), // igakord unikaalne
-        "timestamp": new Date(), // praegune aeg
-        "customer_url": "https://webshop-be51b.web.app"
-        
-        
-    };
-
-    const paymentHeaders = {
-      "Authorization": "Basic ZTM2ZWI0MGY1ZWM4N2ZhMjo3YjkxYTNiOWUxYjc0NTI0YzJlOWZjMjgyZjhhYzhjZA==",
-      "Content-Type": "application/json"
-    };
-
-   fetch(url, {"method":"POST", "body": JSON.stringify(paymentData), "headers": paymentHeaders}) //headers - sisselogimise tunnused, bodys - tooted
-   .then (res => res.json())
-   .then(json => window.location.href = json.payment_link) 
-
-   // windows.location.href --> tähendab välisele rakendusele suunamist
-   //navigate ("/") <-- raksenduse seseselt JavaScriptis
-   // <Link to="""> <---HTMLs
-  }
+  
 
 
 
   return (
     <div>
       {cart.length > 0 &&
-        <div className='cart-top' >
+        <div className={styles['cart-top']} >
           <Button variant="outlined" onClick={emptyCart} >Empty Cart</Button>
 
           <div>Total items : {cart.length} tk</div>
@@ -125,48 +90,40 @@ function Cart() {
       }
       {/* {cart.length > 0 && } */}
       {cart.map((element, index) =>
-      <div className='product-wrapper' >
-        <div className='product' key={index}>
-          <img
-            className='image' src={element.product.image} alt="" />
-          <div className='name' >{element.product.name}</div>
-          <div className='price' >{element.product.price.toFixed(2)}</div>
-          <div className='quantity'>
+        <div className={styles['product-wrapper']} >
+          <div className={styles.product} key={index}>
+            <img
+              className={styles.image} src={element.product.image} alt="" />
+            <div className={styles.name} >{element.product.name}</div>
+            <div className={styles.price} >{element.product.price.toFixed(2)}</div>
+            <div className={styles.quantity}>
+              <img src="/minus.png" className={element.quantity === 1 ? "disabled" : 'button'} disabled={element.quantity === 1} onClick={() => decreaseQuantity(index)} alt="" />
+              <div>{element.quantity}</div>
+              <img src="/plus.png" className={styles.button} onClick={() => increaseQuantity(index)} alt="" />
+            </div>
+            <div className={styles.total}>{(element.product.price * element.quantity).toFixed(2)}</div>
+            {/* <button onClick={() => add (product)} >+</button> */}
+            <img src="/delete.png" className={styles.button} onClick={() => removeFromCart(index)} alt="" />
+          </div>
+          <div className={styles['mobile-view']}>
             <img src="/minus.png" className={element.quantity === 1 ? "disabled" : 'button'} disabled={element.quantity === 1} onClick={() => decreaseQuantity(index)} alt="" />
             <div>{element.quantity}</div>
-            <img src="/plus.png" className='button' onClick={() => increaseQuantity(index)} alt="" />
+            <img src="/plus.png" className={styles.button} onClick={() => increaseQuantity(index)} alt="" />
           </div>
-          <div className='total'>{(element.product.price * element.quantity).toFixed(2)}</div>
-          {/* <button onClick={() => add (product)} >+</button> */}
-          <img src="/delete.png" className='button' onClick={() => removeFromCart(index)} alt="" />
         </div>
-        <div className='mobile-view'>
-        <img src="/minus.png" className={element.quantity === 1 ? "disabled" : 'button'} disabled={element.quantity === 1} onClick={() => decreaseQuantity(index)} alt="" />
-        <div>{element.quantity}</div>
-        <img src="/plus.png" className='button' onClick={() => increaseQuantity(index)} alt="" />
-        </div>
-      </div>
       )}
       {cart.length > 0 &&
-        <div className='cart-bottom'>
-          <div className='sum'>Total Amount: {totalSum()} €</div>
-          
+        <div className={styles['cart-bottom']}>
+          <div className={styles.sum}>Total Amount: {totalSum()} €</div>
 
-          <input ref={searchedRef} onChange={searchFromParcelMachines} type="text" />
+            <ParcelMachine/>
 
-          <select className='parcelMachines' >
-            { parcelMachines
-            .filter (el => el.A0_NAME === "EE")
-            .map(el => <option>{el.NAME}</option>)}
-            
-          </select>
-
-<button onClick={pay}>Pay</button>
+          <Payment sum={totalSum()} />
 
         </div>
       }
       {cart.length === 0 &&
-        <div className='center' >
+        <div className={styles.center}>
           <br />
           Cart is empty  <Link to="/">Add more products</Link>
         </div>}

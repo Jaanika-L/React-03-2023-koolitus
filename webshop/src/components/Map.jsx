@@ -3,6 +3,10 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import ChangeView from './ChangeView';
+import { useEffect, useState } from 'react';
+import config from "../data/config.json"
+
+
 let DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow,
@@ -14,6 +18,15 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 function Map(props) { 
 
+  const [shops, setShops] =useState ([])
+  useEffect(() => {
+    fetch(config.shopsDbUrl)
+    .then(res=>res.json())
+    .then(json => setShops(json)) 
+    
+  }, []);
+
+
   return (
   <div>
 
@@ -23,7 +36,17 @@ function Map(props) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[59.4219, 24.7935]}>
+{shops.map(element =>
+  <Marker position ={[element.latitude, element.longitude]}>
+    <Popup>
+      <a href="https://www.google.com/maps/place/%C3%9Clemiste+keskus/@59.4219391,24.7916837,17z/data=!3m1!4b1!4m6!3m5!1s0x4692eb54f4edfe43:0x206e6dcbdf41435e!8m2!3d59.4219391!4d24.793867!16s%2Fm%2F0hrdb05">
+        {element.name}. <br /> Avatud {element.openTime}
+      </a>
+    </Popup>
+  </Marker>
+  )}
+
+      {/* <Marker position={[59.4219, 24.7935]}>
         <Popup>
          <a href="https://www.google.com/maps/place/%C3%9Clemiste+keskus/@59.4219391,24.7916837,17z/data=!3m1!4b1!4m6!3m5!1s0x4692eb54f4edfe43:0x206e6dcbdf41435e!8m2!3d59.4219391!4d24.793867!16s%2Fm%2F0hrdb05">
           Ülemiste keskus. <br /> Avatud 9-20
@@ -39,7 +62,7 @@ function Map(props) {
         <Popup>
           Tasku keskus. <br /> Avatud 10-22
         </Popup>
-      </Marker>
+      </Marker> */}
     </MapContainer>
   </div>)
 }
