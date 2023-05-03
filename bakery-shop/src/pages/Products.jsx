@@ -52,7 +52,7 @@ function Products() {
               <td>{product.name}</td>
               <td>{product.price}</td>
               {/*  TODO: Display the quantity in red if it is lower than 3 */}
-              <td>{product.quantity}</td> 
+              <td  className={product.quantity < 3 ? "red" : ""}>{product.quantity}</td> 
               <td>{product.store}</td>
             </tr>
           )}
