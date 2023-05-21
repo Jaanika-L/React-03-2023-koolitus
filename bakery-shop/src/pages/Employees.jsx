@@ -33,24 +33,24 @@ const addEmployee = () => {
 
 //   // TODO: Load data from backend service
 
-//   const addEmployee = () => {
-//     users.push({"first_name" : usersRef.current.value})
-//     setUsers(users.slice())
-//     fetch(config.usersUrl,
-//       {"method": "PUT", "body":   JSON.stringify(users)}
-//       )
-//     // TODO: Add validations
-//     // TODO: Add an employee to the table
-//   }
+  const addEmployee = () => {
+    users.push({"first_name" : usersRef.current.value})
+    setUsers(users.slice())
+    fetch(config.usersUrl,
+      {"method": "PUT", "body":   JSON.stringify(users)}
+      )
+    // TODO: Add validations
+    // TODO: Add an employee to the table
+  }
 
-//   const deleteEmployee = (index) => {
-//     users.splice(index, 1);
-//     setUsers(users.slice());
-//     fetch(config.usersUrl,
-//       {"method": "PUT", "body":JSON.stringify(users)}
-//       )
-//     // TODO: Delete an employee from the table
-//   }
+  const deleteEmployee = (index) => {
+    users.splice(index, 1);
+    setUsers(users.slice());
+    fetch(config.usersUrl,
+      {"method": "PUT", "body":JSON.stringify(users)}
+      )
+    // TODO: Delete an employee from the table
+  }
 
   return (
   
@@ -75,7 +75,7 @@ const addEmployee = () => {
               <td>{user.first_name}</td>
               <td>{user.email}</td>
               <td>{user.avatar}</td>
-              {/* <td><button onClick={()=>deleteEmployee(index)} >Delete</button> </td> */}
+              <td><button onClick={()=>deleteEmployee(index)} >Delete</button> </td>
 
             </tr>
           )
