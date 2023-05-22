@@ -8,6 +8,8 @@ import Write from './pages/write/Write';
 import Settings from './pages/settings/Settings';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
+import ManagePost from './pages/manage/ManagePost';
+import ChangePost from './pages/change/ChangePost';
 
 function App() {
 
@@ -18,6 +20,7 @@ function App() {
 
 <TopBar/>
 
+
       <Routes>
         <Route path='' element={<Home/>}/>
         <Route path='single' element={<Single/>}/>
@@ -25,7 +28,9 @@ function App() {
         <Route path='settings' element={<Settings/>}/>
         <Route path='login' element={<Login/>}/>
         <Route path='register' element={<Register/>}/>
-        <Route path=''></Route>
+        <Route path='post/:index' element ={<Single/>}/>
+        <Route path='manage' element = {<ManagePost/>}/>
+        <Route path='change/:index' element = {<ChangePost/>}/>
       </Routes>
 
 

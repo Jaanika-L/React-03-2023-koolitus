@@ -26,6 +26,9 @@ function TopBar() {
             <Link className='link' to="/write">WRITE</Link>
           </li>
           <li className='topListItem'>
+            <Link className='link' to="/manage">MANAGE</Link>
+          </li>
+          <li className='topListItem'>
             {user && "LOGOUT"}
           </li>
         </ul>

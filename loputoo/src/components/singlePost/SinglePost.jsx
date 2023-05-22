@@ -1,7 +1,14 @@
+import { useParams } from "react-router-dom"
 import "./singlePost.css"
 
 function SinglePost() {
+    const {index} = useParams()
+    const post = JSON.parse(localStorage.getItem("post")) || [];
+    const foundPost = post[index];
+   
     return (
+
+        <div>{foundPost}
         <div className='singlePost'>
             <div className="singlePostWrapper">
                 <img className="singlePostImg" src="https://upload.wikimedia.org/wikipedia/commons/a/a2/1121098-pink-nature-wallpaper-1920x1080-lockscreen.jpg" alt="" />
@@ -18,15 +25,11 @@ function SinglePost() {
                 </div>
                 <p className="singlePostDesc">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                     Commodi voluptatem blanditiis adipisci deserunt ea nulla, fugiat saepe repellat alias
-                    aperiam sint at ipsum tempore fugit facere aliquid? Quisquam, excepturi eligendi?Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Commodi voluptatem blanditiis adipisci deserunt ea nulla, fugiat saepe repellat alias
-                    aperiam sint at ipsum tempore fugit facere aliquid? Quisquam, excepturi eligendi?Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Commodi voluptatem blanditiis adipisci deserunt ea nulla, fugiat saepe repellat alias
-                    aperiam sint at ipsum tempore fugit facere aliquid? Quisquam, excepturi eligendi?Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Commodi voluptatem blanditiis adipisci deserunt ea nulla, fugiat saepe repellat alias
-                    aperiam sint at ipsum tempore fugit facere aliquid? Quisquam, excepturi eligendi?</p>
+                    aperiam sint at ipsum tempore fugit facere aliquid? Quisquam, excepturi eligendi</p>
             </div>
-        </div>
+            </div>
+        </div> 
+        
     )
 }
 

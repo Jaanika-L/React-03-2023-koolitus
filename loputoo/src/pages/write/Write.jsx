@@ -3,13 +3,16 @@ import "./write.css"
 
 function Write() {
   const writeTitleRef = useRef();
-  const writeStoryRef = useRef();
+  const writePostRef = useRef();
 
-  const addNewStory = () => {
-    const story = JSON.parse(localStorage.getItem("story")) || [];
-    story.push(writeStoryRef.current.value);
-    story.push(writeTitleRef.current.value);
-    localStorage.setItem("story",JSON.stringify(story));
+  const addNewPost = () => {
+    const post = JSON.parse(localStorage.getItem("post")) || []; //Siin vist peab olema nii "title" kui "postil" võti
+    const newPost = {
+    "title": writeTitleRef.current.value,
+    "post": writePostRef.current.value
+  }
+    post.push(newPost);
+    localStorage.setItem("post",JSON.stringify(post));
     }
 
 
@@ -22,15 +25,15 @@ function Write() {
                 <i className="writeIcon fa-solid fa-plus"></i>
                 </label>
                 <input type="file" id="fileInput" style={{display:"none"}}/>
-                <input ref={writeStoryRef} type="text" placeholder="title" className="writeInput"  autoFocus={true}/>
+                <input ref={writeTitleRef} type="text" placeholder="title" className="writeInput"  autoFocus={true}/>
             </div>
             <div className="writeFormGroup">
-<textarea ref={writeTitleRef} placeholder="Tell your story..." type="text" className="writeInput writeText">
+<textarea ref={writePostRef} placeholder="Tell your story..." type="text" className="writeInput writeText">
 
 </textarea>
 
             </div>
-            <button onClick={addNewStory} className="writeSubmit">Publish</button>
+            <button onClick={addNewPost} className="writeSubmit">Publish</button>
         </form>
     </div>
   )

@@ -1,14 +1,20 @@
+import { Link } from "react-router-dom";
 import Post from "../post/Post"
-import "./posts.css" 
+import "./posts.css"
 
 function Posts() {
-  const story = JSON.parse(localStorage.getItem("story")) || [];
+  const post = JSON.parse(localStorage.getItem("post")) || [];
   return (
     <div className='posts'>
-    <Post/>
-    <div>{story.map(story => <div>{story}</div>)}</div>
-
+      <Post />
+      <div>{post.map((post, index) =>
+        <Link to={"/post/" + index}>
+          <div>{post}</div>
+        </Link>
+        )}
     </div>
+
+     </div>
   )
 }
 

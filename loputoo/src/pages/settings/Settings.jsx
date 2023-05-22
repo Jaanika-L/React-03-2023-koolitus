@@ -1,5 +1,4 @@
 import "./settings.css"
-import Sidebar from "../../components/sidebar/Sidebar"
 
 function Settings() {
   return (
@@ -27,7 +26,6 @@ function Settings() {
             <button className="settingsSubmit">Update</button>
         </form>
         </div>
-        <Sidebar/>
         </div>
   )
 }
