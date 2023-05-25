@@ -8,6 +8,7 @@ function MuudaPostitust() {
     const [leitudPostitused, setLeitudPostitused]=useState([]);
     const pealkiriRef = useRef()
     const sisuRef = useRef()
+    const piltRef = useRef()
     // const piltRef=useRef()
 
   useEffect(() => {
@@ -22,7 +23,8 @@ function MuudaPostitust() {
   const muuda = () => {
     leitudPostitused[index] = {
         pealkiri: pealkiriRef.current.value,
-        sisu: sisuRef.current.value}
+        sisu: sisuRef.current.value,
+        pilt: piltRef.current.value }
         fetch(config.postitusedDbUrl,
             {"method": "PUT", "body": JSON.stringify(leitudPostitused)}
             )
@@ -38,7 +40,8 @@ function MuudaPostitust() {
         <label>Sisu</label><br />
         <input ref={sisuRef} type='text' defaultValue={leitudPostitused[index]?.sisu}/><br />
         <label>Pilt</label><br />
-        {/* <input ref={piltRef} type='file' defaultValue={leitudPostitused[index]?.pilt}/><br /> */}
+        
+        <input ref={piltRef} type='url' defaultValue={leitudPostitused[index]?.pilt}/><br />
         <button onClick={muuda}>Muuda</button>
     </div>
   )

@@ -37,12 +37,10 @@ function Postitused() {
     return (
      
       <div className='postitused'>
-            <div>
-            
-            </div>
         { klikitudPostitus !== "" && <div>Klikkisid postituse {klikitudPostitus}</div>}
         {postitused.map((postitus,index) =>
           <div className='postitused'>
+            {postitus.pilt && <img className='postituse-pilt' src={postitus.pilt} alt="Postituse pilt" /> }
             <div className='postituse-pealkiri'>{postitus.pealkiri}</div><br />
             <div className='postituse-sisu'>{postitus.sisu}</div>
             <div className='postituse-aeg'>{postitus.aeg}</div>

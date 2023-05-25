@@ -7,11 +7,11 @@
 }
 .writeFormGroup {
     margin-left: 150px;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     
 }
-.writeIcon{
+/* .writeIcon{
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -22,10 +22,10 @@
     font-size: 20px;
     color:rgb(121, 118, 118);
     cursor: pointer;
-}
+} */
 
 .writeInput {
-    font-size: 20px;
+    font-size: 30px;
     border: none;
     padding: 20px;
     width: 70vw;
@@ -36,6 +36,7 @@
 .writeText {
     font-size: 20px;
     height: 100vh;
+    
 }
 .writeSubmit {
     position: absolute;
@@ -48,6 +49,7 @@
     border-radius: 10px;
     cursor: pointer;
     font-size:16px;
+    
 }
 .writeImg {
     margin-left: 150px;
@@ -55,5 +57,13 @@
     height: 250px;
     border-radius: 10px;
     object-fit: cover;
+
+}
+
+.lisa-pilt {
+    font-size: 20px;
+    border: none;
+    padding: 20px;
+    width: 70vw;
 
 }

@@ -7,28 +7,32 @@ function ValitudPostitus() {
     )
 
     const eemalda = (index) => {
-        valitudPostitused.splice(index,1);
+        valitudPostitused.splice(index, 1);
         uuendaValitudPostitused(valitudPostitused.slice())
         localStorage.setItem("valitudPostitused", JSON.stringify(valitudPostitused))
     }
 
 
-  return (
-    <div>
-        {valitudPostitused.map((postitus, index)=>
-            <div>
-                <div>{postitus.pealkiri}</div>
-                <div>{postitus.sisu}</div>
-                <div>{postitus.aeg}</div>
-                <button onClick={()=>eemalda(index)}>Eemalda</button>
-                <Link to={"/muuda-postitust/" + index}>
-                <button>Muuda</button>
-                </Link>
+    return (
+        <div>
+            {valitudPostitused.map((postitus, index) =>
+                <div>
+                    <div> {postitus.pilt && 
+                    <img className='postituse-pilt' 
+                    src={postitus.pilt} alt="Postituse pilt" />}
+                    </div>
+                    <div>{postitus.pealkiri}</div>
+                    <div>{postitus.sisu}</div>
+                    <div>{postitus.aeg}</div>
+                    <button onClick={() => eemalda(index)}>Eemalda</button>
+                    <Link to={"/muuda-postitust/" + index}>
+                        <button>Muuda</button>
+                    </Link>
 
-            </div>
+                </div>
             )}
-    </div>
-  )
+        </div>
+    )
 }
 
 export default ValitudPostitus
