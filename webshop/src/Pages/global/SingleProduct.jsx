@@ -11,10 +11,12 @@ import { Spinner } from 'react-bootstrap';
 
 function SingleProduct() {
   const { id } = useParams()
-  const [isLoading, setLoading] = useState(true);
-
   const [dbProducts, setDbProducts]=useState([])
   const found = dbProducts.find(element => element.id === Number(id));
+  
+  
+  
+  const [isLoading, setLoading] = useState(true);
    
   useEffect(() => {
     fetch(config.productsDbUrl)

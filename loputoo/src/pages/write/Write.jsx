@@ -7,13 +7,18 @@ function Write() {
 
   const addNewPost = () => {
     const post = JSON.parse(localStorage.getItem("post")) || []; //Siin vist peab olema nii "title" kui "postil" võti
-    const newPost = {
-    "title": writeTitleRef.current.value,
-    "post": writePostRef.current.value
-  }
-    post.push(newPost);
+    post.push(writeTitleRef.current.value)
+    post.push(writePostRef.current.value)
     localStorage.setItem("post",JSON.stringify(post));
-    }
+  }
+   
+  //   const newPost = {
+  //   "title": writeTitleRef.current.value,
+  //   "post": writePostRef.current.value
+  // }
+  //   post.push(newPost);
+   
+    
 
 
   return (

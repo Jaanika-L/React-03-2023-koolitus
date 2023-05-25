@@ -1,0 +1,90 @@
+/* useEffect(() => {
+    fetch(config.postitusedDbUrl)
+    .then(res=> res.json())
+    .then(json => {
+      const filteredData = json.filter(item => item !== null);
+      muudaPostitused(filteredData || [])
+  })
+  }, []); */
+
+.postitused {
+    flex: 9;
+    width:385px ;
+    margin: 0px 25px 40px 25px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.postituse-pilt {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 7px;
+}
+.postituse-pealkiri {
+    font-size: 24px;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 700;
+    margin-top: 15px;
+    cursor: pointer;
+
+    }
+
+   /* .postituse-aeg {
+    font-family: "Lora", serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #999;
+
+   }  */
+    
+    .postituse-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* .postituse-kategooria {
+        font-family: "Varela Round", sans-serif;
+        font-size: 11px;
+        color: #be9656;
+        line-height: 20px;
+        margin-top: 15px;
+        margin-right:10px;
+        cursor: pointer;
+        margin-top: 15px;
+    } */
+    
+.postituse-sisu{
+    font-family: "Varela Round", sans-serif;
+    font-size: 14px;
+    color: #444;
+    line-height: 24px;
+    margin-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+}
+
+    .nupp {
+      
+        color: white;
+        background-color: teal;
+        padding: 10px;
+        border: none;
+        border-radius:10px;
+        cursor: pointer;
+        font-size:16px;
+        justify-content: space-between;
+        
+        
+    
+    }
+    .nupp:hover{
+        opacity:0.7;
+        cursor: pointer;
+    }
