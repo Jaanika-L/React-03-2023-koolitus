@@ -1,0 +1,53 @@
+.form-container {
+    margin-left: 150px;
+    align-items: center;
+  }
+  .form {
+    position: relative;
+  }
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-input {
+    font-size: 30px;
+    border: none;
+    padding: 20px;
+    width: 70vw;
+    
+    
+  }
+
+  .form-sisu {
+    font-size: 30px;
+    border: none;
+    padding: 20px;
+    width: 70vw;
+
+   
+
+  }
+  .form-group{
+    margin-left: 100;
+    align-items: center;
+  }
+  .form-input:focus{
+    outline: none;
+}
+  .form-button {
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size:16px;
+  }
+  
+  .form-button:hover {
+    background-color: #45a049;
+  }

@@ -13,21 +13,22 @@ function App() {
 
 
   return (
-  <div className='app'>
+    <div className='app'>
 
-<TopBar/>
+      <TopBar />
 
-    <Routes>
-<Route path="" element={<Avaleht/>}/>
-<Route path="lisa-postitus" element={<LisaPostitus/>}/>
-<Route path="vali-postitus" element={<ValitudPostitus/>}/>
-<Route path='login' element={<Login/>}/>
- <Route path='register' element={<Register/>}/>
-<Route path="yks-postitus/:index" element={<YksPostitus/>}/>
-<Route path="muuda-postitust/:index" element={<MuudaPostitust/>}/>
+      <Routes>
+        <Route path="" element={<Avaleht />} />
+        <Route path="lisa-postitus" element={<LisaPostitus />} />
+        <Route path="vali-postitus" element={<ValitudPostitus />} />
+        <Route path='login' element={<Login />} />
+        <Route path='register' element={<Register />} />
 
-    </Routes>
-  </div>
+        <Route path="yks-postitus/:index" element={<YksPostitus />} />
+        <Route path="muuda-postitust/:index" element={<MuudaPostitust />} />
+
+      </Routes>
+    </div>
   );
 }
 

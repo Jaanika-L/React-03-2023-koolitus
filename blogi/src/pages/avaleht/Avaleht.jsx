@@ -1,10 +1,11 @@
 // import React, { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom';
 import Header from '../../components/header/Header';
+import Sidebar from '../../components/sidebar/Sidebar';
+import Postitused from '../../components/postitused/Postitused';
 import "./avaleht.css"
 // import config from "../../data/config.json"
-import Sidebar from '../../components/sidebar/Sidebar';
-import Postitused from '../../components/posts/Postitused';
+
 
 
 function Avaleht() {

@@ -1,24 +1,75 @@
-.postituse-pealkiri {
-    font-size: 30px;
-text-align: center;
-}
-.postituse-sisu{
-    font-size: 20px;
-    text-align: center;
-}
-.postituse-aeg{
-    font-size: 10px;
-    text-align: center;
-    padding: 20px;
+
+
+.yks-postitus {
+    display: flex;
 }
 
-.postituse-pilt {
-    height: 100px;
-    width: 100px;
+.yks-postitus-kokku {
     padding: 20px;
-    margin-left: 150px; 
-    width: 80vw;
-    height: 250px;
-    border-radius: 10px;
-    object-fit: cover;
+    padding-right: 0;
+
+
 }
+
+.yhe-postituse-pealkiri {
+    text-align: center;
+    margin: 10px;
+    font-family: "Lora", serif;
+    font-size: 28px;
+
+}
+.yhe-postituse-sisu{
+    color:#666;
+    font-size: 18px;
+    line-height: 25px;
+
+}
+
+.yhe-postituse-sisu::first-letter{
+    margin-left: 20px;
+    font-size: 30px;
+    font-weight: 600px;
+
+}
+
+
+.yhe-postituse-muutmine {
+    float: right;
+    font-size: 16px;
+
+}
+
+.yhe-postituse-pilt {
+width: 100%;
+height: 300px;
+border-radius: 5px;
+object-fit: cover;
+}
+
+.yhe-postituseIkoon {
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+
+.yhe-postituseIkoon:first-child{
+    color: teal;
+}
+
+.yhe-postituseIkoon:last-child{
+    color: tomato;
+}
+.yhe-postituse-info {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-family: 'Varela Round', sans-serif;
+    color: #b39656;
+}
+
+
+
+
+
+  

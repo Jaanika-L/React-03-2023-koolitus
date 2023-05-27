@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import "./lisapostitus.css"
 import config from "../../data/config.json"
-import FileUpload from '../../components/FileUpload';
+// import FileUpload from '../../components/FileUpload';
 
 function LisaPostitus() {
   const [postitus, setPostitus] = useState([]);

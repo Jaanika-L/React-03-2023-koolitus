@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import config from "../../data/config.json"
+import "./muudapostitust.css"
+
 
 
 function MuudaPostitust() {
@@ -34,15 +36,16 @@ function MuudaPostitust() {
 //   const leitud = leitudPostitused[index] ||[];
     
   return (
-    <div>
-        <label>Pealkiri</label><br />
-        <input ref={pealkiriRef} type='text' defaultValue={leitudPostitused[index]?.pealkiri}/><br />
-        <label>Sisu</label><br />
-        <input ref={sisuRef} type='text' defaultValue={leitudPostitused[index]?.sisu}/><br />
-        <label>Pilt</label><br />
+    <div className='form-container'>
+      <form className='form'>
+        <div className='form-group'>
+        <input className='form-input' ref={pealkiriRef} type='text' defaultValue={leitudPostitused[index]?.pealkiri}/><br />
+        <input className='form-sisu' ref={sisuRef} type='text' defaultValue={leitudPostitused[index]?.sisu}/><br />
         
-        <input ref={piltRef} type='url' defaultValue={leitudPostitused[index]?.pilt}/><br />
-        <button onClick={muuda}>Muuda</button>
+        <input className='form-input' ref={piltRef} type='url' defaultValue={leitudPostitused[index]?.pilt}/><br />
+        </div>
+        <button className='form-button' onClick={muuda}>Muuda</button>
+        </form>
     </div>
   )
 }
