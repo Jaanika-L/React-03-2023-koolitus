@@ -1,37 +1,31 @@
-/* useEffect(() => {
-    fetch(config.postitusedDbUrl)
-    .then(res=> res.json())
-    .then(json => {
-      const filteredData = json.filter(item => item !== null);
-      muudaPostitused(filteredData || [])
-  })
-  }, []); */
-
 .postitused {
-    flex: 9;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    margin: 0 480px 0 5%;
+    gap: 20px;
+
 }
 
+.postitus {
+    /* width: 385px; */
+    margin: 10px 25px 40px 25px;
+}
 
-
-
-
-
-    /* width:385px ;
-    margin: 0px 25px 40px 25px;
-    display: flex;
-    flex-wrap: wrap;
-
+.postitus a {
+    text-decoration: none;
+    color: inherit;
+}
+.postitus:hover {
+    box-shadow: 0 10px 40px 0 lightgrey;
 }
 
 .postituse-pilt {
     width: 100%;
-    height: 280px;
+    /* height: 280px; */
     object-fit: cover;
     border-radius: 7px;
 }
+
 .postituse-pealkiri {
     font-size: 24px;
     font-family: "Josefin Sans", sans-serif;
@@ -39,23 +33,43 @@
     margin-top: 15px;
     cursor: pointer;
 
-    }
+}
 
-   /* .postituse-aeg {
+.postituse-aeg {
     font-family: "Lora", serif;
     font-size: 13px;
     font-style: italic;
     color: #999;
 
-   }  */
-    
-    /* .postituse-info{
+}
+
+.postituse-sisu {
+    font-family: "Varela Round", sans-serif;
+    font-size: 14px;
+    color: #444;
+    line-height: 24px;
+    margin-top: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+
+}
+
+/* .postituse-info{
         display: flex;
         flex-direction: column;
         align-items: center;
-    } */
+    }  */
 
-    /* .postituse-kategooria {
+/* .postitus {
+    width: 385px;
+    margin: 0px 25px 40px 25px;
+    
+}  */
+
+/* .postituse-kategooria {
         font-family: "Varela Round", sans-serif;
         font-size: 11px;
         color: #be9656;
@@ -65,36 +79,50 @@
         cursor: pointer;
         margin-top: 15px;
     } */
-    
-/* .postituse-sisu{
-    font-family: "Varela Round", sans-serif;
-    font-size: 14px;
-    color: #444;
-    line-height: 24px;
-    margin-top: 15px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp:4 ;
-    -webkit-box-orient: vertical;
+
+
+
+.nupp {
+
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    justify-content: space-between;
+
+
 
 }
 
-    .nupp {
-      
-        color: white;
-        background-color: teal;
-        padding: 10px;
-        border: none;
-        border-radius:10px;
-        cursor: pointer;
-        font-size:16px;
-        justify-content: space-between;
-        
-        
-    
+.nupp:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    .postituse-pilt {
+        width: 75px;
+        height: 75px;
+           
     }
-    .nupp:hover{
-        opacity:0.7;
-        cursor: pointer;
-    }  */
+    .postituse-pealkiri {
+        font-size: 15px;
+    }
+    .postituse-sisu {
+        font-size: 8px;
+        line-height: 10px;
+    }
+    
+}
+
+@media only screen and (max-width: 550px) {
+    .postituse-pilt {
+        width: 50px;
+        height: 50px;
+           
+    }
+    
+}

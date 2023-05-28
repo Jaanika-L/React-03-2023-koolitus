@@ -1,29 +1,30 @@
+import { useTranslation } from "react-i18next";
 import "./sidebar.css"
 
 function Sidebar() {
+  const { t } = useTranslation();
   return (
     <div className="sidebar">
       <div className="sidebarItem">
-        <span className="sidebarTitle">ABOUT ME</span>
-        <img src="https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_1280.jpg" alt="" />
+        <span className="sidebarTitle">{t("about")}</span>
+        <img src="https://cdn.pixabay.com/photo/2016/07/11/15/43/woman-1509956_1280.jpg" alt="" />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Quia, tempora. Sequi cupiditate
+          Lorem ipsum dolor sit amet
         </p>
       </div>
       <div className="sidebarItem">
-        <span className="sidebarTitle">CATEGORIES</span>
+        <span className="sidebarTitle">{t("categories")}</span>
         <ul className="sidebarList">
-          <li className="sidebarListItem">Style</li>
-          <li className="sidebarListItem">Design</li>
-          <li className="sidebarListItem">Food</li>
-          <li className="sidebarListItem">Relationships</li>
-          <li className="sidebarListItem">Travel</li>
-          <li className="sidebarListItem">Motherhood</li>
+          <li className="sidebarListItem">{t("style")}</li>
+          <li className="sidebarListItem">{t("design")}</li>
+          <li className="sidebarListItem">{t("food")}</li>
+          <li className="sidebarListItem">{t("relationships")}</li>
+          <li className="sidebarListItem">{t("travel")}</li>
+          <li className="sidebarListItem">{t("motherhood")}</li>
         </ul>
       </div>
       <div className="sidebarItem">
-        <span className="sidebarTitle">FOLLOW US</span>
+        <span className="sidebarTitle">{t("follow")}</span>
         <div className="sidebarSocial">
         <a className="sidebarIcon fa-brands fa-square-facebook" href="https://www.facebook.com/"></a>
         <a className="sidebarIcon fa-brands fa-square-twitter" href="https://www.twitter.com/"></a>

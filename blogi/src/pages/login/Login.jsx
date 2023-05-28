@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom"
 import "./login.css"
+import { useTranslation } from "react-i18next";
 
 function Login() {
+  const { t } = useTranslation();
+
   return (
     <div className="login">
-      <span className="loginTitle">Login</span>
+      <span className="loginTitle">{t("login")}</span>
       <form className="loginForm">
-        <label>Email</label>
-        <input type="text" className="loginInput" placeholder="Enter your email..." />
-        <label>Password</label>
-        <input type="password" className="loginInput"  placeholder="Enter your password..." />
-        <button className="loginButton">Login</button>
+        <label>{t("email")}</label>
+        <input type="text" className="loginInput" placeholder={t("enterE")}/>
+        <label>{t("password")}</label>
+        <input type="password" className="loginInput"  placeholder={t("enterP")} />
+        <button className="loginButton">{t("login")}</button>
       </form>
       <button className="loginRegisterButton">
-      <Link className="link" to='/register'>Register</Link>
+      <Link className="link" to='/register'>{t("registerTitle")}</Link>
       </button>
     </div>
   )
