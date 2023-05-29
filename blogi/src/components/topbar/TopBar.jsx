@@ -16,6 +16,8 @@ function TopBar() {
     <div className='top'>
 
       <div className='topLeft'>
+      <img  className='lang' src="/estonia.png" alt="" onClick={() => updateLanguage("ee")}/>
+        <img  className='lang' src="/united-kingdom.png" alt="" onClick={() => updateLanguage("en")}/>
         <a className="topIcon fa-brands fa-square-facebook" href="https://www.facebook.com/"></a>
         <a className="topIcon fa-brands fa-square-twitter" href="https://www.twitter.com/"></a>
         <a className="topIcon fa-brands fa-square-pinterest" href="https://www.pinterest.com/"></a>
@@ -42,8 +44,7 @@ function TopBar() {
         </ul>
       </div>
       <div className='topRight'>
-        <img  className='lang' src="/estonia.png" alt="" onClick={() => updateLanguage("ee")}/>
-        <img  className='lang' src="/united-kingdom.png" alt="" onClick={() => updateLanguage("en")}/>
+       
 
         <img
           className='topImg '

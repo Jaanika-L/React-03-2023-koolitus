@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import "./lisapostitus.css"
 import config from "../../data/config.json"
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+// import { Link } from 'react-router-dom';
 // import FileUpload from '../../components/FileUpload';
 
 function LisaPostitus() {
@@ -10,7 +11,7 @@ function LisaPostitus() {
   // const [imageUrl, setImageUrl]=useState("")
 
 
-  const [s6num, uuendaS6num] = useState("");
+  // const [s6num, uuendaS6num] = useState("");
   const pealkiriRef = useRef();
   const sisuRef = useRef();
   const piltRef = useRef();
@@ -26,14 +27,13 @@ function LisaPostitus() {
 
   const addNewPost = () => {
     if (pealkiriRef.current.value === "") {
-      uuendaS6num("Tühja pealkirjaga ei saa sisestada")
+      toast.error("Tühja pealkirjaga ei saa sisestada")
       return;
     }
     if (sisuRef.current.value === "") {
-      uuendaS6num("Tühja pealkirjaga ei saa sisestada")
+      toast.error("Tühja sisuga ei saa sisestada")
       return;
     }
-    uuendaS6num("Postitus " + pealkiriRef.current.value + " lisatud!");
 
     const newPost ={
       "pealkiri": pealkiriRef.current.value,
@@ -46,17 +46,21 @@ function LisaPostitus() {
 
     setPostitus([newPost, ...postitus]); //Lisab postituse esimeseks, mitte viimaseks.
 
-    // postitus.push({
+    fetch(config.postitusedDbUrl,
+      { "method": "PUT", "body": JSON.stringify([newPost, ...postitus]) 
+    } //lisab postituse esimeseks mitte viimaseks
+    )
+    toast.success("Postitus " + pealkiriRef.current.value + " lisatud!");
+
+  }
+
+  // postitus.push({
     //   "pealkiri": pealkiriRef.current.value,
     //   "sisu": sisuRef.current.value,
     //   "pilt": piltRef.current.value,
     //   // "pilt":imageUrl,
     //   "aeg": new Date()
     // })
-    fetch(config.postitusedDbUrl,
-      { "method": "PUT", "body": JSON.stringify([newPost, ...postitus]) } //lisab postituse esimeseks mitte viimaseks
-    )
-  }
 
 
   return (
@@ -64,7 +68,7 @@ function LisaPostitus() {
       <img className="writeImg" src="https://thumbs.dreamstime.com/b/panoramic-autumn-landscape-wooden-path-fall-nature-backgro-sunset-background-97979511.jpg" alt="" />
       <form className='writeForm'>
         <div className='writeFormGroup'>
-          <div>{s6num}</div><br />
+          {/* <div>{s6num}</div><br /> */}
           {/* <label htmlFor="fileInput">
       <i className="writeIcon fa-solid fa-plus"></i>
       </label> */}
@@ -81,10 +85,19 @@ function LisaPostitus() {
             </textarea>
           </div>
         </div>
-        <Link to={"/"}>
         <button onClick={addNewPost} className='writeSubmit'>{t("add")}</button>
-        </Link >
       </form>
+      <ToastContainer
+      position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark" />
     </div>
   )
 }

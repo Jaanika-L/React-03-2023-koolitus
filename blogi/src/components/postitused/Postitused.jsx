@@ -34,8 +34,8 @@ function Postitused() {
   return (
 
     <div>
-      <Sidebar />
-      {klikitudPostitus !== "" && <div>Klikkisid postituse {klikitudPostitus}</div>}
+      {/* <Sidebar /> */}
+      <div>{klikitudPostitus}</div>
       <div className='postitused'>
         {postitused.map((postitus, index) =>
 

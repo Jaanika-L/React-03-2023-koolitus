@@ -41,10 +41,8 @@ function YksPostitus() {
 
   
   return (
-    <div>
-      {/* <Sidebar/> */}
-
-      <div className='yks-postitus'>
+    <div className='yks-postitus'>
+      <div className='yks-postitus-kokku'>
         {leitud.pilt && <img className='yhe-postituse-pilt' src={leitud.pilt} alt="Postituse pilt" />}
         <h1 className='yhe-postituse-pealkiri'>{leitud.pealkiri}
         </h1>

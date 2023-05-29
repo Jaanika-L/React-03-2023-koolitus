@@ -1,7 +1,7 @@
 // import React, { useEffect, useState } from 'react'
 // import { Link } from 'react-router-dom';
 import Header from '../../components/header/Header';
-// import Sidebar from '../../components/sidebar/Sidebar';
+import Sidebar from '../../components/sidebar/Sidebar';
 import Postitused from '../../components/postitused/Postitused';
 import "./avaleht.css"
 // import config from "../../data/config.json"
@@ -47,7 +47,7 @@ function Avaleht() {
             <Header/>
             <div className='avaleht'>
             <Postitused/>
-          {/* <Sidebar/>   */}
+          <Sidebar/>  
           
           
       {/* { klikitudPostitus !== "" && <div>Klikkisid postituse {klikitudPostitus}</div>}

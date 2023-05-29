@@ -49,10 +49,11 @@ function MuudaPostitust() {
     <div className='form-container'>
       <form className='form'>
         <div className='form-group'>
+        <input className='form-input' ref={piltRef} type='url' defaultValue={leitudPostitused[index]?.pilt} /><br />
           <input className='form-input' ref={pealkiriRef} type='text' defaultValue={leitudPostitused[index]?.pealkiri} /><br />
-          <input className='form-sisu' ref={sisuRef} type='text' defaultValue={leitudPostitused[index]?.sisu} /><br />
+          <textarea className='form-sisu' rows="30"  ref={sisuRef} type='text' defaultValue={leitudPostitused[index]?.sisu} >
+          </textarea>
 
-          <input className='form-input' ref={piltRef} type='url' defaultValue={leitudPostitused[index]?.pilt} /><br />
           <input
             className='form-input'
             type='text'

@@ -92,7 +92,12 @@
 }
 
 @media only screen and (max-width: 700px) {
-    .postituse-pilt {
+
+    .postitus {
+        width: 285px;
+        
+    }
+    /* .postituse-pilt {
         width: 75px;
         height: 75px;
            
@@ -103,15 +108,15 @@
     .postituse-sisu {
         font-size: 8px;
         line-height: 10px;
-    }
+    } */
     
 }
 
 @media only screen and (max-width: 550px) {
-    .postituse-pilt {
-        width: 50px;
-        height: 50px;
-           
-    }
     
+    .postitus {
+        width: 285px;
+        
+    }  
 }
+    

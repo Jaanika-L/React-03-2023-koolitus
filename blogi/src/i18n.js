@@ -39,7 +39,9 @@ const resources = {
       "contact-send":"Send",
       "contact-title":"Send Message",
       "name":"Name",
-      "message":"Message"
+      "message":"Message",
+      'toast.error.contact':"Please fill all the fields!",
+      'toast-success-contact':"Message sent!"
 
 
     
@@ -61,7 +63,7 @@ const resources = {
       "relationships":"Suhted",
       "travel":"Reisimine",
       "motherhood":"Emadus",
-      "follow":"JÄLGI MEID",
+      "follow":"JÄLGI",
       "add":"Lisa",
       "img":"Lisa pilt",
       "title":"Pealkiri",
@@ -79,7 +81,9 @@ const resources = {
       "contact-send":"Saada",
       "contact-title":"Saada sõnum",
       "name":"Nimi",
-      "message":"Sõnum"
+      "message":"Sõnum",
+      'toast.error.contact':"Palun täida kõik väljad!",
+      'toast-success-contact':"Sõnum saadetud!"
 
     }
   }
