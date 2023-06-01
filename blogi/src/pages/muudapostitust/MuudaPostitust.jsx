@@ -12,6 +12,7 @@ function MuudaPostitust() {
   const pealkiriRef = useRef()
   const sisuRef = useRef()
   const piltRef = useRef()
+  const kategooriaRef = useRef();
   // const piltRef=useRef()
   const { t } = useTranslation();
 
@@ -30,6 +31,7 @@ function MuudaPostitust() {
       pealkiri: pealkiriRef.current.value,
       sisu: sisuRef.current.value,
       pilt: piltRef.current.value,
+      kategooria: kategooriaRef.current.value,
       aeg: new Date()
     }
     fetch(config.postitusedDbUrl,
@@ -43,14 +45,24 @@ function MuudaPostitust() {
     return new Date(date).toLocaleDateString(undefined, options);
   }
 
-  //   const leitud = leitudPostitused[index] ||[];
 
   return (
     <div className='form-container'>
       <form className='form'>
         <div className='form-group'>
+          <label className='label'>{t("picture")}</label><br />
         <input className='form-input' ref={piltRef} type='url' defaultValue={leitudPostitused[index]?.pilt} /><br />
+<label className='label'>{t("change-category")}</label><br />
+        <select className='form-input' ref={kategooriaRef} defaultValue={leitudPostitused[index]?.kategooria}>
+            <option>{t("category")}</option>
+            <option value="Linnud">Linnud</option>
+            <option value="Loodus">Loodus</option>
+            <option value="Loomad">Loomad</option>
+            <option value="Putukad">Putukad</option>
+          </select><br />
+          <label className='label'>{t("title")}</label><br />
           <input className='form-input' ref={pealkiriRef} type='text' defaultValue={leitudPostitused[index]?.pealkiri} /><br />
+          <label className='label'>{t("content")}</label><br />
           <textarea className='form-sisu' rows="30"  ref={sisuRef} type='text' defaultValue={leitudPostitused[index]?.sisu} >
           </textarea>
 

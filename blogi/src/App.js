@@ -10,13 +10,14 @@ import MuudaPostitust from './pages/muudapostitust/MuudaPostitust';
 import {ContactUs} from './pages/kontakt/ContactUs';
 
 function App() {
-  
+
 
 
   return (
     <div className='app'>
 
       <TopBar />
+      
 
       <Routes>
         <Route path="" element={<Avaleht />} />

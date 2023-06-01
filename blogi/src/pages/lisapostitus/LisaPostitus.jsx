@@ -15,6 +15,7 @@ function LisaPostitus() {
   const pealkiriRef = useRef();
   const sisuRef = useRef();
   const piltRef = useRef();
+  const kategooriaRef = useRef()
   const { t } = useTranslation();
 
 
@@ -35,37 +36,39 @@ function LisaPostitus() {
       return;
     }
 
-    const newPost ={
+    const newPost = {
       "pealkiri": pealkiriRef.current.value,
       "sisu": sisuRef.current.value,
       "pilt": piltRef.current.value,
-      // "pilt":imageUrl,
+      "kategooria": kategooriaRef.current.value,
       "aeg": new Date()
+      // "pilt":imageUrl,
 
     };
 
     setPostitus([newPost, ...postitus]); //Lisab postituse esimeseks, mitte viimaseks.
 
     fetch(config.postitusedDbUrl,
-      { "method": "PUT", "body": JSON.stringify([newPost, ...postitus]) 
-    } //lisab postituse esimeseks mitte viimaseks
+      {
+        "method": "PUT", "body": JSON.stringify([newPost, ...postitus])
+      } //lisab postituse esimeseks mitte viimaseks
     )
     toast.success("Postitus " + pealkiriRef.current.value + " lisatud!");
 
   }
 
   // postitus.push({
-    //   "pealkiri": pealkiriRef.current.value,
-    //   "sisu": sisuRef.current.value,
-    //   "pilt": piltRef.current.value,
-    //   // "pilt":imageUrl,
-    //   "aeg": new Date()
-    // })
+  //   "pealkiri": pealkiriRef.current.value,
+  //   "sisu": sisuRef.current.value,
+  //   "pilt": piltRef.current.value,
+  //   // "pilt":imageUrl,
+  //   "aeg": new Date()
+  // })
 
 
   return (
     <div className='write'>
-      <img className="writeImg" src="https://thumbs.dreamstime.com/b/panoramic-autumn-landscape-wooden-path-fall-nature-backgro-sunset-background-97979511.jpg" alt="" />
+      <img className="writeImg" src="https://cdn.pixabay.com/photo/2016/07/21/20/56/anemone-1533515_1280.jpg" alt="" />
       <form className='writeForm'>
         <div className='writeFormGroup'>
           {/* <div>{s6num}</div><br /> */}
@@ -74,11 +77,16 @@ function LisaPostitus() {
       </label> */}
           {/* <input type="file" id="fileInput" style={{display:"none"}}/> */}
 
-
-
-          <input ref={piltRef} type="text" placeholder={t("img")} className='lisa-pilt' /><br />
+          <input ref={piltRef} type="text" placeholder={t("img")} className='lisa-pilt' autoFocus={true} /><br />
+          <select ref={kategooriaRef} className="vali-kategooria">
+            <option>{t("category")}</option>
+            <option value="Linnud">{t("birds")}</option>
+            <option value="Loodus">{t("nature")}</option>
+            <option value="Loomad">{t("animals")}</option>
+            <option value="Putukad">{t("creatures")}</option>
+          </select>
           {/* <FileUpload onSendPictureUrl={setImageUrl}/> */}
-          <input ref={pealkiriRef} type="text" placeholder={t("title")} className='writeInput' autoFocus={true} /><br />
+          <input ref={pealkiriRef} type="text" placeholder={t("title")} className='writeInput' /><br />
 
           <div>
             <textarea ref={sisuRef} placeholder={t("write")} type="text" className='writeInput writeText'>
@@ -88,16 +96,16 @@ function LisaPostitus() {
         <button onClick={addNewPost} className='writeSubmit'>{t("add")}</button>
       </form>
       <ToastContainer
-      position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover
-theme="dark" />
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark" />
     </div>
   )
 }

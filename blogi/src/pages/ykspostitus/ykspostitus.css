@@ -1,6 +1,7 @@
 
 .yks-postitus{
-    flex: 9;
+    display: flex;
+    /* flex: 9; */
     /* align-items: center;
     justify-content: center;
     display: flex;
@@ -9,8 +10,11 @@
 
 
 .yks-postitus-kokku {
-    padding: 20px;
-    padding-right: 0;
+    padding-right: 100px;
+    padding-left: 100px;
+    padding-bottom: 100px;
+
+
 }
 
 .yhe-postituse-pealkiri {
@@ -71,9 +75,77 @@ object-fit: cover;
     font-family: 'Varela Round', sans-serif;
     color: #b39656;
 }
+.yhe-postituse-kategooria{
+    text-align: center;
+    margin: 20px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 16px;
+    color: #b39656;
 
+}
 
+@media only screen and (max-width: 700px) {
+    .yhe-postituse-pealkiri {
+        margin: 15px;
+        font-size: 30px;
+    
+    }
+    .yhe-postituse-sisu{
+        font-size: 15px;
+        line-height: 25px;
+    
+    }
+    .yhe-postituse-info {
+        margin-bottom: 15px;
+        font-size: 12px;
+       
+    }
+    .yhe-postituse-kategooria{
+        margin: 15px;
+        font-size: 12px;
+       
+    
+    }
 
+}
+
+@media only screen and (max-width: 550px) {
+    .yhe-postituse-pealkiri {
+        margin: 10px;
+        font-size: 20px;
+    
+    }
+    .yhe-postituse-sisu{
+        font-size: 12px;
+        line-height: 20px;
+    
+    }
+    .yhe-postituse-info {
+        margin-bottom: 10px;
+        font-size: 8px;
+       
+    }
+    .yhe-postituse-kategooria{
+        margin: 10px;
+        font-size: 8px;
+       
+    
+    }
+    
+    .yhe-postituse-pilt {
+        width: 100%;
+        height: 100px;
+        
+        }
+ .yks-postitus-kokku {
+            padding-right: 50px;
+            padding-left: 50px;
+            padding-bottom: 50px;
+        
+        
+        }
+        
+}
 
 
   

@@ -1,16 +1,19 @@
-.write{
+.write {
     padding-top: 50px;
 }
+
 .writeForm {
     position: relative;
 
 }
+
 .writeFormGroup {
     margin-left: 150px;
     /* display: flex; */
     align-items: center;
-    
+
 }
+
 /* .writeIcon{
     width: 25px;
     height: 25px;
@@ -30,14 +33,17 @@
     padding: 20px;
     width: 70vw;
 }
-.writeInput:focus{
+
+.writeInput:focus {
     outline: none;
 }
+
 .writeText {
     font-size: 20px;
     height: 100vh;
-    
+
 }
+
 .writeSubmit {
     position: absolute;
     top: 20px;
@@ -48,9 +54,10 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    font-size:16px;
-    
+    font-size: 16px;
+
 }
+
 .writeImg {
     margin-left: 150px;
     width: 70vw;
@@ -66,4 +73,90 @@
     padding: 20px;
     width: 70vw;
 
+}
+
+.vali-kategooria {
+    font-size: 20px;
+    border: none;
+    padding: 20px;
+    /* width: 30vw; */
+    display: block;
+    /* Add this line */
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .writeFormGroup {
+        margin-left: 100px;
+        /* display: flex; */
+        align-items: center;
+
+    }
+
+    .writeImg {
+        margin-left: 100px;
+        width: 70vw;
+        height: 200px;
+        border-radius: 10px;
+        object-fit: cover;
+
+    }
+
+    .lisa-pilt {
+        font-size: 15px;
+
+    }
+
+    .vali-kategooria {
+        font-size: 15px;
+    }
+
+    .writeInput {
+        font-size: 20px;
+    }
+
+    .writeSubmit {
+
+        font-size: 15px;
+
+    }
+
+}
+
+@media only screen and (max-width: 550px) {
+    .writeFormGroup {
+        margin-left: 50px;
+        /* display: flex; */
+        align-items: center;
+
+    }
+
+    .writeImg {
+        margin-left: 50px;
+        width: 70vw;
+        height: 200px;
+        border-radius: 10px;
+        object-fit: cover;
+
+    }
+
+    .lisa-pilt {
+        font-size: 10px;
+
+    }
+
+    .vali-kategooria {
+        font-size: 10px;
+    }
+
+    .writeInput {
+        font-size: 15px;
+    }
+
+    .writeSubmit {
+
+        font-size: 10px;
+
+    }
 }

@@ -32,7 +32,7 @@ function YksPostitus() {
   }
 
   const kustutapostitus = (index) => {
-    leitudPostitused.splice(index, 1);
+    leitudPostitused.splice(index,1);
     setLeitudPostitused(leitudPostitused.slice());
     fetch(config.postitusedDbUrl,
       { "method": "PUT", "body": JSON.stringify(leitudPostitused) }
@@ -46,6 +46,7 @@ function YksPostitus() {
         {leitud.pilt && <img className='yhe-postituse-pilt' src={leitud.pilt} alt="Postituse pilt" />}
         <h1 className='yhe-postituse-pealkiri'>{leitud.pealkiri}
         </h1>
+        <div className='yhe-postituse-kategooria'>{leitud.kategooria}</div>
         <div className='yhe-postituse-muutmine'>
           <Link to={"/muuda-postitust/" + index}>
             <i className="yhe-postituseIkoon fa-regular fa-pen-to-square"></i>

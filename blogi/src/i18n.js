@@ -15,12 +15,6 @@ const resources = {
       "theses": "React Theses",
       "blog":"Blog",
       "categories": "CATEGORIES",
-      "style":"Style",
-      "design":"Design",
-      "food" :"Food",
-      "relationships":"Relationship",
-      "travel":"Travel",
-      "motherhood":"Motherhood",
       "follow":"FOLLOW US",
       "add":"ADD",
       "img":"Add image",
@@ -41,7 +35,19 @@ const resources = {
       "name":"Name",
       "message":"Message",
       'toast.error.contact':"Please fill all the fields!",
-      'toast-success-contact':"Message sent!"
+      'toast-success-contact':"Message sent!",
+      "category":"Choose category",
+      "animals":"Animals",
+      "creatures":"Creatures",
+      "birds":"Birds",
+      "all-posts":"All posts",
+      "nature":"Nature",
+      "change-category":"Category",
+      "picture":"Picture",
+      "content":"Content",
+      "scroll":"Scroll up",
+      "find":"Find"
+      
 
 
     
@@ -57,12 +63,6 @@ const resources = {
       "theses":"React lõputöö",
       "blog": "Blogi",
       "categories": "KATEGOORIAD",
-      "style":"Mood",
-      "design":"Disain",
-      "food" :"Toit",
-      "relationships":"Suhted",
-      "travel":"Reisimine",
-      "motherhood":"Emadus",
       "follow":"JÄLGI",
       "add":"Lisa",
       "img":"Lisa pilt",
@@ -83,7 +83,19 @@ const resources = {
       "name":"Nimi",
       "message":"Sõnum",
       'toast.error.contact':"Palun täida kõik väljad!",
-      'toast-success-contact':"Sõnum saadetud!"
+      'toast-success-contact':"Sõnum saadetud!",
+      "category":"Vali kategooria",
+      "animals":"Loomad",
+      "creatures":"Putukad",
+      "birds":"Linnud",
+      "all-posts":"Kõik postitused",
+      "nature":"Loodus",
+      "change-category":"Kategooria",
+      "picture":"Pilt",
+      "content":"Sisu",
+      "scroll":"Tagasi üles",
+      "find":"Otsi"
+
 
     }
   }

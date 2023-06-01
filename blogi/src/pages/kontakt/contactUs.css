@@ -4,22 +4,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0.5)
-    ),
-    url("https://png.pngtree.com/thumb_back/fh260/background/20220629/pngtree-letter-envelope-illustration-image-mail-message-floated-sent-image_1416038.jpg");
+    background: linear-gradient(rgba(255, 255, 255, 0.5),
+            rgba(255, 255, 255, 0.5)),
+        url("https://png.pngtree.com/thumb_back/fh260/background/20220629/pngtree-letter-envelope-illustration-image-mail-message-floated-sent-image_1416038.jpg");
     background-size: cover;
 }
 
-.contactForm{
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column;
-        width: 50vh;
-    
-    
+.contactForm {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 50vh;
+
+
 }
+
 .contactTitle {
     font-size: 50px;
 }
